@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Diploma</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="homeFragment">Главная</string>
     <string name="my_orders">Мои заказы</string>
     <string name="support_chat">Поддержка</string>
     <string name="profile">Профиль</string>
+    <string name="txtTimeFood">Время вкусной и полезной еды</string>
+    <string name="text_for_you">Специально для тебя:</string>
+    <string name="free_bonus">500</string>
+    <string name="bonus">бонусов</string>
+    <string name="txtMenu">Меню</string>
+    <string name="on_choice">на выбор</string>
 </resources>

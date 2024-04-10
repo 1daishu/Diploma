@@ -1,10 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.HomeFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/involve_bold"
+        android:text="Привет, Даниил!"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtDeliciousAndHealthyFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/involve_medium"
+        android:text="@string/txtTimeFood"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewHomeFragment"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_17sdp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="93dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_for_you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/involve_bold"
+                android:text="@string/text_for_you"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgLine"
+                android:layout_width="133dp"
+                android:layout_height="87dp"
+                android:layout_marginStart="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:contentDescription="TODO"
+                android:elevation="1dp"
+                android:src="@drawable/ic_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/backgroundForImg"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="53dp" />
+
+            <ImageView
+                android:id="@+id/imgLineBottom"
+                android:layout_width="133dp"
+                android:layout_height="87dp"
+                android:layout_marginStart="@dimen/_1sdp"
+                android:layout_marginBottom="@dimen/_25sdp"
+                android:contentDescription="TODO"
+                android:elevation="1dp"
+                android:src="@drawable/ic_line"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/backgroundForImg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="138dp" />
+
+
+            <ImageView
+                android:id="@+id/imgHuman"
+                android:layout_width="146dp"
+                android:layout_height="183dp"
+                android:layout_marginStart="56dp"
+                android:contentDescription="TODO"
+                android:elevation="2dp"
+                android:src="@mipmap/photo_human"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+            <ImageView
+                android:id="@+id/backgroundForImg"
+                android:layout_width="142dp"
+                android:layout_height="203dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtBonus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="52dp"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/terminator_gen"
+                android:text="@string/free_bonus"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@id/backgroundForImg"
+                app:layout_constraintTop_toTopOf="@id/backgroundForImg" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/involve_medium"
+                android:text="@string/bonus"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintStart_toStartOf="@id/backgroundForImg"
+                app:layout_constraintTop_toBottomOf="@id/txtBonus" />
+
+            <ImageView
+                android:id="@+id/imgBackground"
+                android:layout_width="142dp"
+                android:layout_height="203dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="52dp"
+                android:fontFamily="@font/terminator_gen"
+                android:text="@string/txtMenu"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@+id/imgBackground"
+                app:layout_constraintTop_toTopOf="@id/imgBackground" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:fontFamily="@font/involve_medium"
+                android:text="@string/on_choice"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintStart_toStartOf="@+id/txtMenu"
+                app:layout_constraintTop_toBottomOf="@id/txtMenu" />
+
+            <ImageView
+                android:layout_width="133dp"
+                android:layout_height="133dp"
+                android:layout_marginBottom="16dp"
+                android:src="@mipmap/meal_photo_one"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="117dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginBottom="84dp"
+                android:src="@mipmap/meal_photo_second"
+                app:layout_constraintBottom_toBottomOf="@id/imgBackground"
+                app:layout_constraintStart_toStartOf="@id/imgBackground">
+
+            </ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
