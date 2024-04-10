@@ -295,7 +295,11 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="16dp"
-                android:text="ЗАКАЗАТЬ"
+                android:background="@drawable/bnt_design"
+                android:fontFamily="@font/involve_medium"
+                android:text="@string/order"
+                android:textColor="@color/black"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

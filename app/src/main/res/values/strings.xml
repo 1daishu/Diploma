@@ -15,4 +15,5 @@
     <string name="_3">3 блюда</string>
     <string name="_4">4 блюда</string>
     <string name="choice_interval">Выберите интервал</string>
+    <string name="order">ЗАКАЗАТЬ</string>
 </resources>
