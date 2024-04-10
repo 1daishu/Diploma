@@ -2,4 +2,8 @@
     <string name="app_name">Diploma</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homeFragment">Главная</string>
+    <string name="my_orders">Мои заказы</string>
+    <string name="support_chat">Поддержка</string>
+    <string name="profile">Профиль</string>
 </resources>
