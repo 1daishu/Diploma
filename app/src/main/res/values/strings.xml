@@ -10,4 +10,9 @@
     <string name="bonus">бонусов</string>
     <string name="txtMenu">Меню</string>
     <string name="on_choice">на выбор</string>
+    <string name="txtDeliciousWithDeliveryStr">Вкусная еда с доставкой</string>
+    <string name="choice_count_receptions">Выберите количество приемов:</string>
+    <string name="_3">3 блюда</string>
+    <string name="_4">4 блюда</string>
+    <string name="choice_interval">Выберите интервал</string>
 </resources>
