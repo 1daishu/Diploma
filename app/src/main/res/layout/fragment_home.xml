@@ -51,10 +51,51 @@
         app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewAddressView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:text="Адрес доставки:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="Москва " />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:src="@drawable/ic_shape" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/ic_mark">
+
+        </ImageView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardViewHomeFragment"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_200sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         app:cardCornerRadius="@dimen/_17sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
@@ -115,7 +156,7 @@
                 android:layout_height="183dp"
                 android:layout_marginStart="56dp"
                 android:contentDescription="TODO"
-                android:elevation="2dp"
+                android:elevation="3dp"
                 android:src="@mipmap/photo_human"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
@@ -186,6 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_1sdp"
+                android:elevation="@dimen/_3sdp"
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/on_choice"
                 android:textColor="@color/black"
@@ -215,7 +257,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="@dimen/_210sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_17sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
@@ -254,7 +296,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDishesThree"
                 android:layout_width="@dimen/_115sdp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_38sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bnt_design"
@@ -266,8 +308,51 @@
                 app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
             <com.google.android.material.button.MaterialButton
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/bnt_design"
+                android:text="1 неделя"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="#F3F3F3"
+                android:textColorLink="#FFFFFF"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/bnt_design"
+                android:text="Месяц"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="#F3F3F3"
+                android:textColorLink="#FFFFFF"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="128dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/bnt_design"
+                android:text="2 недели "
+                android:textColor="@android:color/black"
+                android:textColorHighlight="#F3F3F3"
+                android:textColorLink="#FFFFFF"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="@dimen/_115sdp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_38sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/bnt_design"
@@ -280,7 +365,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/choice_interval"
                 android:textColor="@color/black"
@@ -290,16 +375,16 @@
                 tools:layout_editor_absoluteY="167dp" />
 
             <Button
+                android:id="@+id/btn_order"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="13dp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bnt_design"
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/order"
                 android:textColor="@color/black"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
