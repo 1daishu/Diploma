@@ -9,6 +9,5 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 interface RepositoryModule {
-    @Binds
-    fun bindsMealRepository()
+
 }
