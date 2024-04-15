@@ -29,5 +29,6 @@
     <string name="ninja">НИНДЗЯ</string>
     <string name="address_delivery">Адрес доставки:</string>
     <string name="str_change">ИЗМЕНИТЬ</string>
+    <string name="your_chance">Твой выбор</string>
 
 </resources>
