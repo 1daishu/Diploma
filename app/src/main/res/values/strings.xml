@@ -10,10 +10,24 @@
     <string name="bonus">бонусов</string>
     <string name="txtMenu">Меню</string>
     <string name="on_choice">на выбор</string>
-    <string name="txtDeliciousWithDeliveryStr">Вкусная еда с доставкой</string>
     <string name="choice_count_receptions">Выберите количество приемов:</string>
     <string name="_3">3 блюда</string>
     <string name="_4">4 блюда</string>
     <string name="choice_interval">Выберите интервал</string>
     <string name="order">ЗАКАЗАТЬ</string>
+    <string name="msg_repeat">Повторим?❤️</string>
+    <string name="has_something_happened">Что-то случилось?💔</string>
+    <string name="your_data_is_safe">Твои данные в безопасности🔐</string>
+    <string name="str_personal">Твой персонаж</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txtDeliciousWithDeliveryStr">Some delicious text with delivery</string>
+    <string name="save_time">Сохрани свое время для чего-то более важного</string>
+    <string name="write_to_us">Напиши нам, мы обязательно разберемся</string>
+    <string name="robo">РОБО</string>
+    <string name="ninja">НИНДЗЯ</string>
+    <string name="address_delivery">Адрес доставки:</string>
+    <string name="str_change">ИЗМЕНИТЬ</string>
+
 </resources>
