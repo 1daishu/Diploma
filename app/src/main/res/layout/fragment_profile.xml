@@ -53,7 +53,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_profile"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_42sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="@font/involve_medium"
             android:text="Даниил Неизвестный"
             android:textColor="@color/black" />
@@ -108,7 +108,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_about_you"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_180sdp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
@@ -133,35 +133,36 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_100sdp"
+                android:id="@+id/img_background_profile"
+                android:layout_width="@dimen/_255sdp"
+                android:layout_height="@dimen/_160sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_1sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:src="@drawable/ic_background_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_about_you" />
 
             <ImageView
-                android:id="@+id/img_background_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_150sdp"
+                android:id="@+id/img_people_profile"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_160sdp"
                 android:src="@drawable/ic_image_people_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/bonus_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="68dp"
                 android:fontFamily="@font/terminator_gen"
                 android:text="@string/free_bonus"
                 android:textColor="@color/black"
@@ -172,7 +173,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/bonus"
@@ -186,53 +187,53 @@
                 android:id="@+id/txtRobot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/terminator_gen"
                 android:text="@string/robo"
                 android:textColor="@color/custom_lilac_purple"
                 android:textSize="@dimen/_20sdp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/img_background_profile"
                 app:layout_constraintTop_toTopOf="@+id/img_background_profile" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txt_ninja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="44dp"
+                android:layout_marginEnd="35dp"
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/ninja"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_8sdp"
                 android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/img_background_profile"
                 app:layout_constraintTop_toBottomOf="@id/txtRobot"
                 tools:layout_editor_absoluteY="108dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="5dp"
                 android:fontFamily="@font/involve_bold"
                 android:text="@string/str_personal"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/img_background_profile"
                 app:layout_constraintTop_toBottomOf="@+id/txtRobot" />
 
             <Button
                 android:layout_width="@dimen/_69sdp"
                 android:layout_height="@dimen/_25sdp"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="32dp"
                 android:backgroundTint="@color/custom_yellow"
                 android:text="Хочу еще"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_7sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/img_background_profile"
                 app:layout_goneMarginStart="@dimen/_10sdp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -240,8 +241,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_address_delivery"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="4dp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
@@ -259,7 +261,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_18sdp"
             android:fontFamily="@font/involve_medium"
             android:text="Москва"
             android:textColor="@color/black" />
@@ -268,48 +270,109 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:src="@drawable/ic_image_icon_yellow_profile" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:src="@drawable/ic_mark_profile_yellow" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_your_chance"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="12dp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/cv_address_delivery">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="Твой выбор"
+            android:textColor="@color/custom_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="3 блюда, 1 месяц"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:src="@drawable/ic_image_icon_yellow_profile" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/ic_change_profile" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_order"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="12dp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/cv_your_chance">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:src="@drawable/ic_image_icon_yellow_profile" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/ic_order_profile" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="Оплата"
+            android:textColor="@color/custom_gray" />
+
+        <TextView
+            android:id="@+id/number_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Номер карты"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp" />
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btn_change"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_24sdp"
         android:backgroundTint="@color/custom_yellow"
         android:text="@string/str_change"
         android:textColor="@color/black"

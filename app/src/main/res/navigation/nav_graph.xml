@@ -29,7 +29,7 @@
         android:id="@+id/authFragment"
         android:name="com.dev.diploma.ui.fragment.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" >
+        tools:layout="@layout/fragment_auth">
         <action
             android:id="@+id/action_authFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -38,7 +38,7 @@
         android:id="@+id/loginFragment"
         android:name="com.dev.diploma.ui.fragment.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_authFragment"
             app:destination="@id/authFragment" />
