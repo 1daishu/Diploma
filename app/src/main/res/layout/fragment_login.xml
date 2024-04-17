@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
-        android:ems="10"
+        android:ems="12"
         android:inputType="phone"
-        android:text="+7"
+        android:maxLength="12"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -114,8 +114,9 @@
             android:id="@+id/button_0"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="17dp"
-            android:layout_marginEnd="44dp"
+            android:layout_marginEnd="47dp"
             android:layout_marginBottom="51dp"
             android:backgroundTint="@color/white"
             android:text="0"
@@ -123,7 +124,10 @@
             android:textSize="@dimen/_16ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/button_8" />
+            app:layout_constraintHorizontal_bias="0.375"
+            app:layout_constraintStart_toEndOf="@+id/button_plus"
+            app:layout_constraintTop_toBottomOf="@+id/button_8"
+            app:layout_constraintVertical_bias="0.6" />
 
         <Button
             android:id="@+id/button_9"
@@ -186,7 +190,7 @@
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="75dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="17dp"
             android:backgroundTint="@color/white"
             android:text="4"
             android:textColor="@color/black"
@@ -207,11 +211,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_3" />
 
+        <Button
+            android:id="@+id/button_plus"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/white"
+            android:text="+"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_7" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="72dp"
             android:clickable="true"
             android:src="@drawable/ic_delete_veref_code"
