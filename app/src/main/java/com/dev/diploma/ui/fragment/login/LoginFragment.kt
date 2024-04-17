@@ -29,25 +29,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        binding.btnLogin.setOnClickListener {
-            val email = binding.loginEt.text.toString()
-            val password = binding.passwordEtc.text.toString()
-            loginUser(email, password)
-        }
-        binding.btnGoRegister.setOnClickListener {
-            findNavController().navigate(R.id.authFragment)
-        }
+
     }
 
-    private fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                findNavController().navigate(R.id.homeFragment)
-            } else {
-
-            }
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
