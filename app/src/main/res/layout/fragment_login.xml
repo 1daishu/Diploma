@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
         android:ems="12"
+        android:focusable="false"
         android:inputType="phone"
         android:maxLength="12"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
