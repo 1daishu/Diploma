@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -42,8 +42,10 @@
         <action
             android:id="@+id/action_loginFragment_to_authFragment"
             app:destination="@id/authFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/verifyCodeFragment"
+        android:name="com.dev.diploma.ui.verify.VerifyCodeFragment"
+        android:label="fragment_verify_code"
+        tools:layout="@layout/fragment_verify_code" />
 </navigation>
