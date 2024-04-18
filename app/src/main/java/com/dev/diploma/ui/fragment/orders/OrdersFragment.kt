@@ -1,6 +1,5 @@
 package com.dev.diploma.ui.fragment.orders
 
-import OrdersViewModel
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

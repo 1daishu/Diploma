@@ -89,17 +89,6 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:text="3 блюда,1 месяц" />
 
-        <Button
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:backgroundTint="@color/custom_purple_bt"
-            android:fontFamily="@font/involve_bold"
-            android:text="@string/str_change"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

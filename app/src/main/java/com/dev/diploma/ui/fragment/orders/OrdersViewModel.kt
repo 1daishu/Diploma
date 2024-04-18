@@ -1,3 +1,5 @@
+package com.dev.diploma.ui.fragment.orders
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.util.Timer
@@ -22,11 +24,9 @@ class OrdersViewModel : ViewModel() {
             24 * 60 * 60 * 1000
         )
     }
-
     fun getCurrentDateLiveData(): MutableLiveData<String> {
         return currentDateLiveData
     }
-
     fun getCurrentDatePlusOneDay(): Calendar {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, 1)
