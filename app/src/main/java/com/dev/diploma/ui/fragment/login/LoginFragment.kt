@@ -11,9 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentLoginBinding
+import com.dev.diploma.ui.activity.SharedViewModel
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -29,6 +32,7 @@ class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by activityViewModels()
     private lateinit var mAuth: FirebaseAuth
     private var verificationId: String = ""
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
     val binding
@@ -53,7 +57,7 @@ class LoginFragment : Fragment() {
             if (TextUtils.isEmpty(binding.editTextPhone.text.toString())) {
                 Toast.makeText(requireContext(), "Введите номер", Toast.LENGTH_SHORT).show()
             } else {
-                val phone = "+7" + binding.editTextPhone.text.toString()
+                val phone = binding.editTextPhone.text.toString()
                 sendVerificationCode(phone)
             }
         }
@@ -66,33 +70,33 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun onLoginSuccess() {
+        sharedViewModel.navigateToHome()
+    }
+
     private fun verifyCode(code: String) {
         val credential = PhoneAuthProvider.getCredential(verificationId, code)
         signInWithCredential(credential)
     }
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
-
-        mAuth.signInWithCredential(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-
-                    findNavController().navigate(R.id.homeFragment)
-                } else {
-
-                    Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_LONG)
-                        .show()
-                }
+        mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                onLoginSuccess()
+                findNavController().navigate(R.id.homeFragment)
+            } else {
+                Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_LONG)
+                    .show()
             }
+        }
     }
 
     private fun sendVerificationCode(number: String) {
-
         val options = PhoneAuthOptions.newBuilder(mAuth)
-            .setPhoneNumber(number)     // Номер телефона для проверки
-            .setTimeout(60L, TimeUnit.SECONDS) // Тайм-аут и единица времени
-            .setActivity(requireActivity())          // Активность (для привязки обратного вызова)
-            .setCallbacks(mCallBack)    // Обратные вызовы OnVerificationStateChangedCallbacks
+            .setPhoneNumber(number)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
+            .setCallbacks(mCallBack)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
@@ -126,7 +130,6 @@ class LoginFragment : Fragment() {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
         }
     }
-
 
     fun observeAppendText() {
         viewModel.textLiViewModel.observe(viewLifecycleOwner) { number ->

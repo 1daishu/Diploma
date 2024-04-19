@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.support.SupportFragment">
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
         android:layout_width="wrap_content"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/_20sdp" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtGreeting"
         android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
         android:textSize="@dimen/_16sdp"
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtDeliciousAndHealthyFood"
         android:layout_width="wrap_content"
@@ -46,6 +49,79 @@
         android:textSize="@dimen/_10sdp"
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_chats"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_420sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/involve_bold"
+
+            android:gravity="top|center_horizontal"
+            android:text="Чат с поддержкой" />
+
+        <RelativeLayout
+            android:id="@+id/rv_support"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/ed_message"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:background="@drawable/rounded_gray_bg"
+                android:gravity="bottom|start"
+                android:hint="Сообщение"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_25sdp"
+                android:paddingBottom="@dimen/_5sdp" />
+
+            <Button
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:backgroundTint="@color/custom_yellow"
+                android:gravity="bottom|end" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/_28sdp"
+                android:layout_marginBottom="@dimen/_25sdp"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow_up" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:src="@drawable/ic_paper_clip" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
