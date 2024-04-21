@@ -6,396 +6,476 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.home.HomeFragment">
 
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/_20sdp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/_20sdp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/_20sdp" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtGreeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/involve_bold"
-        android:text="Привет, Даниил!"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_16sdp"
-        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtDeliciousAndHealthyFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/involve_medium"
-        android:text="@string/txtTimeFood"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewAddressView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:text="@string/address_delivery"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="Москва " />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:src="@drawable/ic_shape" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:src="@drawable/ic_mark" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewHomeFragment"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_180sdp"
-        android:layout_marginTop="@dimen/_40sdp"
-        app:cardCornerRadius="@dimen/_17sdp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="93dp">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="46dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_for_you"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/involve_bold"
-                android:text="@string/text_for_you"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imgLine"
-                android:layout_width="133dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="@dimen/_1sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:contentDescription="TODO"
-                android:elevation="1dp"
-                android:src="@drawable/ic_line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/backgroundForImg"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="53dp" />
-
-            <ImageView
-                android:id="@+id/imgLineBottom"
-                android:layout_width="133dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="@dimen/_1sdp"
-                android:layout_marginBottom="@dimen/_25sdp"
-                android:contentDescription="TODO"
-                android:elevation="1dp"
-                android:src="@drawable/ic_line"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/backgroundForImg"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="138dp" />
-
-
-            <ImageView
-                android:id="@+id/imgHuman"
-                android:layout_width="146dp"
-                android:layout_height="203dp"
-                android:layout_marginStart="56dp"
-                android:contentDescription="TODO"
-                android:elevation="3dp"
-                android:src="@drawable/ic_man_photo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
-
-            <ImageView
-                android:id="@+id/backgroundForImg"
-                android:layout_width="142dp"
-                android:layout_height="185dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_icon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtBonus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="52dp"
-                android:elevation="@dimen/_2sdp"
-                android:fontFamily="@font/terminator_gen"
-                android:text="@string/free_bonus"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
-                app:layout_constraintStart_toStartOf="@id/backgroundForImg"
-                app:layout_constraintTop_toTopOf="@id/backgroundForImg" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="1dp"
-                android:elevation="@dimen/_2sdp"
-                android:fontFamily="@font/involve_medium"
-                android:text="@string/bonus"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintStart_toStartOf="@id/backgroundForImg"
-                app:layout_constraintTop_toBottomOf="@id/txtBonus" />
-
-            <ImageView
-                android:id="@+id/imgBackground"
-                android:layout_width="142dp"
-                android:layout_height="185dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="52dp"
-                android:fontFamily="@font/terminator_gen"
-                android:text="@string/txtMenu"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
-                app:layout_constraintStart_toStartOf="@+id/imgBackground"
-                app:layout_constraintTop_toTopOf="@id/imgBackground" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtChoice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:elevation="@dimen/_3sdp"
-                android:fontFamily="@font/involve_medium"
-                android:text="@string/on_choice"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintStart_toStartOf="@+id/txtMenu"
-                app:layout_constraintTop_toBottomOf="@id/txtMenu" />
-
-            <ImageView
-                android:layout_width="133dp"
-                android:layout_height="133dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_meal_one"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="117dp"
-                android:layout_marginStart="68dp"
-                android:layout_marginBottom="84dp"
-                android:src="@drawable/ic_meal_two"
-                app:layout_constraintBottom_toBottomOf="@id/imgBackground"
-                app:layout_constraintStart_toStartOf="@id/imgBackground" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_210sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_17sdp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/cardViewHomeFragment">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtDeliciousMealWithDelivery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/involve_bold"
-                android:text="@string/txtDeliciousWithDeliveryStr"
+                android:text="Привет, Даниил!"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/choiceMealCount"
+                android:id="@+id/txtDeliciousAndHealthyFood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:text="@string/choice_count_receptions"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtDeliciousMealWithDelivery"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="52dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDishesThree"
-                android:layout_width="@dimen/_115sdp"
-                android:layout_height="@dimen/_38sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bnt_design"
-                android:text="@string/_3"
-                android:textColor="@android:color/black"
-                android:textColorHighlight="#F3F3F3"
-                android:textColorLink="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton4"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="92dp"
-                android:background="@drawable/bnt_design"
-                android:text="1 неделя"
-                android:textColor="@android:color/black"
-                android:textColorHighlight="#F3F3F3"
-                android:textColorLink="#FFFFFF"
-                android:textSize="@dimen/_8sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton3"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginEnd="13dp"
-                android:background="@drawable/bnt_design"
-                android:text="Месяц"
-                android:textColor="@android:color/black"
-                android:textColorHighlight="#F3F3F3"
-                android:textColorLink="#FFFFFF"
-                android:textSize="@dimen/_8sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton2"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginTop="92dp"
-                android:background="@drawable/bnt_design"
-                android:text="2 недели "
-                android:textColor="@android:color/black"
-                android:textColorHighlight="#F3F3F3"
-                android:textColorLink="#FFFFFF"
-                android:textSize="@dimen/_8sdp"
-                app:layout_constraintEnd_toStartOf="@+id/materialButton3"
-                app:layout_constraintStart_toEndOf="@+id/materialButton4"
-                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton"
-                android:layout_width="@dimen/_115sdp"
-                android:layout_height="@dimen/_38sdp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="13dp"
-                android:background="@drawable/bnt_design"
-                android:text="@string/_4"
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/involve_medium"
-                android:text="@string/choice_interval"
+                android:text="@string/txtTimeFood"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnDishesThree" />
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
 
-            <Button
-                android:id="@+id/btn_order"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAddressView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/custom_yellow"
-                android:fontFamily="@font/involve_bold"
-                android:text="@string/order"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:text="@string/address_delivery"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Москва " />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:src="@drawable/ic_shape" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:src="@drawable/ic_mark" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewHomeFragment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_180sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="93dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_for_you"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/involve_bold"
+                        android:text="@string/text_for_you"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imgLine"
+                        android:layout_width="133dp"
+                        android:layout_height="87dp"
+                        android:layout_marginStart="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:contentDescription="TODO"
+                        android:elevation="1dp"
+                        android:src="@drawable/ic_line"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/backgroundForImg"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="53dp" />
+
+                    <ImageView
+                        android:id="@+id/imgLineBottom"
+                        android:layout_width="133dp"
+                        android:layout_height="87dp"
+                        android:layout_marginStart="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_25sdp"
+                        android:contentDescription="TODO"
+                        android:elevation="1dp"
+                        android:src="@drawable/ic_line"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/backgroundForImg"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="138dp" />
+
+
+                    <ImageView
+                        android:id="@+id/imgHuman"
+                        android:layout_width="146dp"
+                        android:layout_height="203dp"
+                        android:layout_marginStart="56dp"
+                        android:contentDescription="TODO"
+                        android:elevation="3dp"
+                        android:src="@drawable/ic_man_photo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+                    <ImageView
+                        android:id="@+id/backgroundForImg"
+                        android:layout_width="142dp"
+                        android:layout_height="185dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="TODO"
+                        android:src="@drawable/ic_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtBonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="52dp"
+                        android:elevation="@dimen/_2sdp"
+                        android:fontFamily="@font/terminator_gen"
+                        android:text="@string/free_bonus"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_20sdp"
+                        app:layout_constraintStart_toStartOf="@id/backgroundForImg"
+                        app:layout_constraintTop_toTopOf="@id/backgroundForImg" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="1dp"
+                        android:elevation="@dimen/_2sdp"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="@string/bonus"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="@id/backgroundForImg"
+                        app:layout_constraintTop_toBottomOf="@id/txtBonus" />
+
+                    <ImageView
+                        android:id="@+id/imgBackground"
+                        android:layout_width="142dp"
+                        android:layout_height="185dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:contentDescription="TODO"
+                        android:src="@drawable/ic_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_for_you" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="52dp"
+                        android:fontFamily="@font/terminator_gen"
+                        android:text="@string/txtMenu"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_20sdp"
+                        app:layout_constraintStart_toStartOf="@+id/imgBackground"
+                        app:layout_constraintTop_toTopOf="@id/imgBackground" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtChoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:elevation="@dimen/_3sdp"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="@string/on_choice"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="@+id/txtMenu"
+                        app:layout_constraintTop_toBottomOf="@id/txtMenu" />
+
+                    <ImageView
+                        android:layout_width="133dp"
+                        android:layout_height="133dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_meal_one"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <ImageView
+                        android:layout_width="141dp"
+                        android:layout_height="117dp"
+                        android:layout_marginStart="68dp"
+                        android:layout_marginBottom="84dp"
+                        android:src="@drawable/ic_meal_two"
+                        app:layout_constraintBottom_toBottomOf="@id/imgBackground"
+                        app:layout_constraintStart_toStartOf="@id/imgBackground" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_600sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/cardViewHomeFragment">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cv_change_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtDeliciousMealWithDelivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/involve_bold"
+                        android:text="@string/txtDeliciousWithDeliveryStr"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/choiceMealCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:text="@string/choice_count_receptions"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtDeliciousMealWithDelivery"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="52dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDishesThree"
+                        android:layout_width="@dimen/_115sdp"
+                        android:layout_height="@dimen/_38sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bnt_design"
+                        android:text="@string/_3"
+                        android:textColor="@android:color/black"
+                        android:textColorHighlight="#F3F3F3"
+                        android:textColorLink="#FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_one_week"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="92dp"
+                        android:background="@drawable/bnt_design"
+                        android:text="1 неделя"
+                        android:textColor="@android:color/black"
+                        android:textColorHighlight="#F3F3F3"
+                        android:textColorLink="#FFFFFF"
+                        android:textSize="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButton3"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="240dp"
+                        android:layout_marginTop="92dp"
+                        android:layout_marginEnd="13dp"
+                        android:background="@drawable/bnt_design"
+                        android:text="Месяц"
+                        android:textColor="@android:color/black"
+                        android:textColorHighlight="#F3F3F3"
+                        android:textColorLink="#FFFFFF"
+                        android:textSize="@dimen/_8sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButton2"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginTop="92dp"
+                        android:background="@drawable/bnt_design"
+                        android:text="2 недели "
+                        android:textColor="@android:color/black"
+                        android:textColorHighlight="#F3F3F3"
+                        android:textColorLink="#FFFFFF"
+                        android:textSize="@dimen/_8sdp"
+                        app:layout_constraintEnd_toStartOf="@+id/materialButton3"
+                        app:layout_constraintStart_toEndOf="@+id/bt_one_week"
+                        app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButton"
+                        android:layout_width="@dimen/_115sdp"
+                        android:layout_height="@dimen/_38sdp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="13dp"
+                        android:background="@drawable/bnt_design"
+                        android:text="@string/_4"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="@string/choice_interval"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnDishesThree" />
+
+                    <TextView
+                        android:id="@+id/tv_your_sample_menu_for_the_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/involve_bold"
+                        android:text="Твое примерное меню на месяц:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.082"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bt_one_week" />
+
+                    <Button
+                        android:id="@+id/dateButton"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="@color/custom_gray_bt"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="Дата1"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
+
+                    <Button
+                        android:id="@+id/dateButtonNext"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="128dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:backgroundTint="@color/custom_gray_bt"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="Дата2"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
+
+                    <Button
+                        android:id="@+id/dateButtonNextNext"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="240dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:backgroundTint="@color/custom_gray_bt"
+                        android:fontFamily="@font/involve_medium"
+                        android:text="Дата"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_order_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Button
+                        android:id="@+id/btn_order"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="112dp"
+                        android:backgroundTint="@color/custom_yellow"
+                        android:fontFamily="@font/involve_bold"
+                        android:text="@string/order"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

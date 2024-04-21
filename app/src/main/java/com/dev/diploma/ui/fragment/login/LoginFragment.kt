@@ -34,7 +34,6 @@ class LoginFragment : Fragment() {
     private var verificationId: String = ""
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-
     val binding
         get() = _binding!!
 
@@ -57,6 +56,7 @@ class LoginFragment : Fragment() {
             if (TextUtils.isEmpty(binding.editTextPhone.text.toString())) {
                 Toast.makeText(requireContext(), "Введите номер", Toast.LENGTH_SHORT).show()
             } else {
+                Toast.makeText(requireContext(), "Код отправлен", Toast.LENGTH_SHORT).show()
                 val phone = binding.editTextPhone.text.toString()
                 sendVerificationCode(phone)
             }
@@ -75,8 +75,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun verifyCode(code: String) {
-        val credential = PhoneAuthProvider.getCredential(verificationId, code)
-        signInWithCredential(credential)
+        if (TextUtils.isEmpty(code) && code.length < 6) {
+            Toast.makeText(requireContext(), "Введите код", Toast.LENGTH_SHORT).show()
+        } else {
+            val credential = PhoneAuthProvider.getCredential(verificationId, code)
+            signInWithCredential(credential)
+        }
     }
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
@@ -85,8 +89,11 @@ class LoginFragment : Fragment() {
                 onLoginSuccess()
                 findNavController().navigate(R.id.homeFragment)
             } else {
-                Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(
+                    requireContext(),
+                    task.exception?.message,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -107,7 +114,6 @@ class LoginFragment : Fragment() {
             forceResendingToken: PhoneAuthProvider.ForceResendingToken
         ) {
             super.onCodeSent(s, forceResendingToken)
-
             verificationId = s
         }
 
@@ -120,7 +126,7 @@ class LoginFragment : Fragment() {
                 Log.e("verify", "Received null code in onVerificationCompleted")
                 Toast.makeText(
                     requireContext(),
-                    "Received null code in onVerificationCompleted",
+                    "Неверный код, повторите попытку заново",
                     Toast.LENGTH_SHORT
                 ).show()
             }

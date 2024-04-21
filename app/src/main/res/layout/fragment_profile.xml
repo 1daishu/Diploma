@@ -94,6 +94,7 @@
             android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_exit_profile"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

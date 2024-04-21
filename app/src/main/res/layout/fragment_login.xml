@@ -13,6 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Введите номер телефона"
         android:inputType="phone"
         android:maxLength="12"

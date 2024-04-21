@@ -6,5 +6,5 @@ import javax.inject.Inject
 class MealUseCase @Inject constructor(
     private val repository: MealRepository
 ) {
-    operator fun invoke() = repository.getMeal()
+    operator fun invoke() = repository.getProduct()
 }

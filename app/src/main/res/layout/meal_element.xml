@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_250sdp"
+    android:layout_height="@dimen/_80sdp">
+
+    <ImageView
+        android:id="@+id/img_categories_element"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:scaleType="fitCenter"
+        android:src="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_categories_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:fontFamily="@font/involve_medium"
+        android:maxWidth="150dp"
+        android:text="Название категории"
+        android:textColor="@color/custom_lilac_purple"
+        android:textSize="@dimen/_14ssp" />
+
+    <TextView
+        android:id="@+id/tv_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/_117sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:fontFamily="@font/involve_medium"
+        android:text="Калории"
+        android:textColor="@color/custom_gray"
+        android:textSize="@dimen/_12ssp" />
+
+</androidx.cardview.widget.CardView>

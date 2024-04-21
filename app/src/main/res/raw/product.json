@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "name": "Каша овсянная с вишневым вареньем",
+    "calories": "Вес:200г|414 ккал",
+    "protein": 13,
+    "fat": 11,
+    "carbohydrates": 1,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/1690818531254df93220c84d22fc284abdf15e25b4bde.webp"
+  },
+  {
+    "id": 2,
+    "name": "Куриная котлета с пикантным соусом",
+    "calories": "Вес:210г|355 ккал",
+    "protein": 31,
+    "fat": 3,
+    "carbohydrates": 0,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/17113084268176d5bd1cd13bad7d73b195ba5a8d1de96.webp"
+  },
+  {
+    "id": 3,
+    "name": "Куриное филе в тайском соусе",
+    "calories": "Вес:250г|450 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/171130842709419a7a6e1a1e9259df57f87b838542f4d.webp"
+  },
+  {
+    "id": 4,
+    "name": "Салат с пекинской капустой,огурцом и сметаной ",
+    "calories": "Вес:180г|310 ккал",
+    "protein": 13,
+    "fat": 11,
+    "carbohydrates": 1,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/16623689633177215f380d9af58d2a4482ff91c5df1b5.webp"
+  },
+  {
+    "id": 5,
+    "name": "Куриное филе в тайском соусе",
+    "calories": "Вес:245г|450 ккал",
+    "protein": 31,
+    "fat": 3,
+    "carbohydrates": 0,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/171108550274923acfc67dd49245a92e919419ee9435d.webp"
+  },
+  {
+    "id": 6,
+    "name": "Бифштекс в сливочно-перечном соусе",
+    "calories": "Вес:190г|325 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/17110855038503eb56ccdf011d31e8df29cd0aae21e4e.webp"
+  },
+  {
+    "id": 7,
+    "name": "Круассан с рукколой и копченой курицей",
+    "calories": "Вес:280г|250 ккал",
+    "protein": 13,
+    "fat": 11,
+    "carbohydrates": 1,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/17005025141262bf51b1c8ddf79c2806b74174ea0e274.webp"
+  },
+  {
+    "id": 8,
+    "name": "Банановое парфе",
+    "calories": "Вес:150г|350 ккал",
+    "protein": 31,
+    "fat": 3,
+    "carbohydrates": 0,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/1663855089109bc1213477681e8d542c27190e03a0c67.webp"
+  },
+  {
+    "id": 9,
+    "name": "Творог с чатни из яблок",
+    "calories": "Вес:200г|355 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/169081856700656869c31367ad3c7724cf66bbb1944e8.webp"
+  },
+  {
+    "id": 10,
+    "name": "Куриное филе с овощным соусом",
+    "calories": "Вес:300г|450 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/1711085503057a2333be14fdb5a1a8e1d85e3c4e78d63.webp"
+  },
+  {
+    "id": 11,
+    "name": "Кофейно-карамельное пирожное",
+    "calories": "Вес:200г|355 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/166973385893699798ebc591e0497e2a42cc1f4ad11ef.webp"
+  },
+  {
+    "id": 12,
+    "name": "Фрикассе из цыпленка с грибами",
+    "calories": "Вес:350г|455 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/171108550346686b031fbb30225a3fff4c78ff06deb8d.webp"
+  },
+  {
+    "id": 13,
+    "name": "Хот-дог Бан ми",
+    "calories": "Вес:250г|555 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/1695826754063301458bac2a6ccd4a5c7301710120257.webp"
+  }
+]
