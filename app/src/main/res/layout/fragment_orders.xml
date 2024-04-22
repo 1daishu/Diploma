@@ -102,8 +102,8 @@
         app:layout_constraintTop_toBottomOf="@id/cv_your_chance_order">
 
         <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -168,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dateButton"
                     tools:layout_editor_absoluteX="27dp"
@@ -186,7 +187,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:backgroundTint="@color/custom_yellow"
         android:fontFamily="@font/involve_bold"
-        android:text="ПРОДЛИТЬ"
+        android:text="ОТМЕНИТЬ"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"

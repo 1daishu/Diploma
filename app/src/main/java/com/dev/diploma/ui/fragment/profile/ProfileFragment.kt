@@ -11,19 +11,21 @@ import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentProfileBinding
 import com.dev.diploma.ui.activity.MainActivity
 import com.dev.diploma.ui.activity.SharedViewModel
+import com.dev.diploma.ui.fragment.userInfoDialog.UserInfoDialogFragment
 
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var userInfoDialogFragment: UserInfoDialogFragment
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        userInfoDialogFragment = UserInfoDialogFragment()
+    }
 
     private val binding
         get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +41,9 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.loginFragment)
             sharedViewModel.navigateToHome()
             observeButtonVisibleProfile()
+        }
+        binding.btnChangeDate.setOnClickListener {
+            findNavController().navigate(R.id.userInfoDialogFragment)
         }
     }
 

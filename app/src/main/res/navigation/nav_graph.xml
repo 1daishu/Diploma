@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.dev.diploma.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
@@ -28,7 +28,11 @@
         android:id="@+id/profileFragment"
         android:name="com.dev.diploma.ui.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_userInfoDialogFragment"
+            app:destination="@id/userInfoDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/authFragment"
         android:name="com.dev.diploma.ui.fragment.auth.AuthFragment"
@@ -50,4 +54,9 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/userInfoDialogFragment"
+        android:name="com.dev.diploma.ui.fragment.userInfoDialog.UserInfoDialogFragment"
+        android:label="fragment_user_info_dialog"
+        tools:layout="@layout/fragment_user_info_dialog" />
 </navigation>

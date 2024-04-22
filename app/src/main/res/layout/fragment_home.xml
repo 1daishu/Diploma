@@ -267,7 +267,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_600sdp"
+                android:layout_height="@dimen/_445sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 app:cardCornerRadius="@dimen/_17sdp"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
@@ -311,7 +311,7 @@
                         android:layout_height="@dimen/_38sdp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/bnt_design"
+                        android:backgroundTint="@color/white"
                         android:text="@string/_3"
                         android:textColor="@android:color/black"
                         android:textColorHighlight="#F3F3F3"
@@ -369,12 +369,12 @@
                         app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButton"
+                        android:id="@+id/btn_dishes_four"
                         android:layout_width="@dimen/_115sdp"
                         android:layout_height="@dimen/_38sdp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="13dp"
-                        android:background="@drawable/bnt_design"
+                        android:backgroundTint="@color/white"
                         android:text="@string/_4"
                         android:textColor="@android:color/black"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -449,10 +449,11 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_order_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginTop="68dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month">
 
@@ -464,15 +465,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="13dp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="112dp"
+                        android:layout_marginBottom="@dimen/_80sdp"
                         android:backgroundTint="@color/custom_yellow"
                         android:fontFamily="@font/involve_bold"
                         android:text="@string/order"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rv_order_home" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

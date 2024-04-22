@@ -23,8 +23,9 @@ class HomeFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var homeAdapter: OrderAdapter
-    private var currentIndex = 0
-    private val itemsPerPage = 3
+    private var isButtonClicked = false
+    private var startIndex = 0
+    private var endIndex = 3
 
     private val binding
         get() = _binding!!
@@ -43,29 +44,65 @@ class HomeFragment : Fragment() {
         observeButtonVisible()
         updateDateBtOrders()
         prepareRecyclerView()
-    }
-
-    private fun updateDateBtOrders() {
-        binding.dateButtonNext.setOnClickListener {
-            currentIndex += itemsPerPage
-            updateAdapterData(currentIndex, itemsPerPage)
+        binding.btnDishesFour.setOnClickListener {
+            isButtonClicked = !isButtonClicked
+        }
+        binding.btnDishesThree.setOnClickListener {
+            isButtonClicked = !isButtonClicked
         }
     }
 
-    private fun updateAdapterData(currentIndex: Int, itemsPerPage: Int) {
+    private fun updateDateBtOrders() {
+        binding.dateButton.setOnClickListener {
+            if (!isButtonClicked) {
+                startIndex = 0
+                endIndex = 3
+                updateAdapterData()
+            } else {
+                startIndex = 0
+                endIndex = 4
+                updateAdapterData()
+            }
+        }
+        binding.dateButtonNext.setOnClickListener {
+            if (!isButtonClicked) {
+                startIndex = 4
+                endIndex = 7
+                updateAdapterData()
+            } else {
+                startIndex = 5
+                endIndex = 9
+                updateAdapterData()
+            }
+        }
+        binding.dateButtonNextNext.setOnClickListener {
+            if (!isButtonClicked) {
+                startIndex = 8
+                endIndex = 11
+                updateAdapterData()
+            } else {
+                startIndex = 10
+                endIndex = 14
+                updateAdapterData()
+            }
+        }
+    }
+
+    private fun updateAdapterData() {
         val dateFromJson = DateFromJson()
         val mealItems = dateFromJson.loadMealItemsFromJson(requireContext())
-        val sublist = mealItems.subList(currentIndex, currentIndex + itemsPerPage)
+        endIndex = minOf(endIndex, mealItems.size)
+        val sublist = mealItems.subList(startIndex, endIndex)
         homeAdapter.submitMealItems(sublist)
     }
 
     private fun prepareRecyclerView() {
         homeAdapter = OrderAdapter()
         binding.rvOrderHome.apply {
-            layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false)
             adapter = homeAdapter
         }
-        updateAdapterData(currentIndex, itemsPerPage)
+        updateAdapterData()
     }
 
     private fun observeButtonVisible() {

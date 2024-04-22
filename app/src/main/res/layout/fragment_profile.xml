@@ -370,7 +370,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btn_change"
+        android:id="@+id/btn_change_date"
         android:layout_width="0dp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginTop="@dimen/_24sdp"

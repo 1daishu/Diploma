@@ -115,5 +115,14 @@
     "fat": 1,
     "carbohydrates": 27,
     "photo_url": "https://api.crm.p-group.ru/upload/images/1695826754063301458bac2a6ccd4a5c7301710120257.webp"
+  },
+  {
+    "id": 14,
+    "name": "Макароны по-флотски",
+    "calories": "Вес:290г|475 ккал",
+    "protein": 4,
+    "fat": 1,
+    "carbohydrates": 27,
+    "photo_url": "https://api.crm.p-group.ru/upload/images/2656.webp"
   }
 ]
