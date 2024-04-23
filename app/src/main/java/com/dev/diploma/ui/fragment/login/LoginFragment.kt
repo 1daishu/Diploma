@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentLoginBinding
+import com.dev.diploma.domain.model.UserInfoAuth
 import com.dev.diploma.ui.activity.SharedViewModel
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.cli.Options
+import com.google.firebase.database.FirebaseDatabase
 import java.util.concurrent.TimeUnit
 
 class LoginFragment : Fragment() {
@@ -33,6 +35,7 @@ class LoginFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private var verificationId: String = ""
     private val sharedViewModel: SharedViewModel by activityViewModels()
+
 
     val binding
         get() = _binding!!
@@ -84,10 +87,32 @@ class LoginFragment : Fragment() {
     }
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
+        val userNumber = binding.editTextPhone.text.toString()
+        val userInfoNumberAuth = UserInfoAuth(userNumber)
         mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                onLoginSuccess()
-                findNavController().navigate(R.id.homeFragment)
+                val currentUser = mAuth.currentUser
+                val uid = currentUser?.uid
+                if (uid != null) {
+                    val databaseReference =
+                        FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                            .getReference("users_num_auth").child(uid)
+                    databaseReference.setValue(userInfoNumberAuth)
+                        .addOnCompleteListener { userDataTask ->
+                            if (userDataTask.isSuccessful) {
+                                onLoginSuccess()
+                                findNavController().navigate(R.id.homeFragment)
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Ошибка при добавлении пользователя в базу данных",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                } else {
+                    TODO()
+                }
             } else {
                 Toast.makeText(
                     requireContext(),

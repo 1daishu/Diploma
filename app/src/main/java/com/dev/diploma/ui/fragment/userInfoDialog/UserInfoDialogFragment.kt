@@ -41,27 +41,41 @@ class UserInfoDialogFragment : Fragment() {
             FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("users")
         binding.saveButton.setOnClickListener {
-            val userName = binding.firstNameEditText.text.toString()
-            val lastName = binding.lastNameEditText.text.toString()
-            val email = binding.emailEditText.text.toString()
-            val user = User(userName, lastName, email)
+            val userName = binding.edName.text.toString()
+            val lastName = binding.edLastName.text.toString()
+            val email = binding.edMail.text.toString()
+            val address = binding.edAddress.text.toString()
+            val payment = binding.edPayment.text.toString()
+            val cvv = binding.edPaymentCvv.text.toString()
+            val term = binding.edPaymentTerm.text.toString()
+            val user = User(userName, lastName, email, address, payment, cvv, term)
             if (uid != null) {
                 try {
                     databaseReference.child(uid).setValue(user).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(requireContext(), "user add", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                "Данные добавлены/изменены",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            Toast.makeText(requireContext(), "unlucky", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                "Введите еще раз",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), "error: ${e.message}", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

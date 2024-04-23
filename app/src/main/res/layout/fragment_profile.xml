@@ -85,6 +85,7 @@
             android:textSize="@dimen/_8sdp" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nameAndLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_42sdp"
@@ -259,6 +260,7 @@
             android:textColor="@color/custom_gray" />
 
         <TextView
+            android:id="@+id/tv_address_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_40sdp"
