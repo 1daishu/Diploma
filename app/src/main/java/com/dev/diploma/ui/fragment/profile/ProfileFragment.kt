@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentProfileBinding
 import com.dev.diploma.domain.model.User
+import com.dev.diploma.domain.model.UserInfoAuth
 import com.dev.diploma.ui.activity.MainActivity
 import com.dev.diploma.ui.activity.SharedViewModel
 import com.dev.diploma.ui.fragment.userInfoDialog.UserInfoDialogFragment
@@ -30,14 +31,13 @@ class ProfileFragment : Fragment() {
         FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("users").child(it)
     }
+    private val binding
+        get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userInfoDialogFragment = UserInfoDialogFragment()
     }
 
-    private val binding
-        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +49,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userInfoDialogFragment = UserInfoDialogFragment()
         binding.btExitProfile.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)
             sharedViewModel.navigateToHome()

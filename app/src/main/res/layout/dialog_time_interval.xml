@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTimeIntervalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите временной интервал"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TimePicker
+        android:id="@+id/startTimePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <TimePicker
+        android:id="@+id/endTimePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <Button
+        android:id="@+id/btnSelectInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выбрать" />
+
+</LinearLayout>

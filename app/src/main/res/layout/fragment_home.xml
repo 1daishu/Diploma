@@ -44,9 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/involve_bold"
-                android:text="Привет, Даниил!"
+                android:text="Привет,"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="@dimen/_18sdp"
                 app:layout_constraintStart_toEndOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
 
@@ -58,7 +58,7 @@
                 android:fontFamily="@font/involve_medium"
                 android:text="@string/txtTimeFood"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp"
                 app:layout_constraintStart_toEndOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
 
@@ -80,6 +80,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/tx_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_40sdp"
@@ -305,30 +306,30 @@
                         tools:layout_editor_absoluteX="16dp"
                         tools:layout_editor_absoluteY="52dp" />
 
-                    <com.google.android.material.button.MaterialButton
+
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnDishesThree"
                         android:layout_width="@dimen/_115sdp"
                         android:layout_height="@dimen/_38sdp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="@dimen/_10sdp"
                         android:text="@string/_3"
                         android:textColor="@android:color/black"
                         android:textColorHighlight="#F3F3F3"
                         android:textColorLink="#FFFFFF"
-                        android:translationZ="4dp"
-                        app:elevation="4dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
 
-                    <com.google.android.material.button.MaterialButton
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/bt_one_week"
                         android:layout_width="@dimen/_75sdp"
-                        android:layout_height="@dimen/_30sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="92dp"
-                        android:background="@drawable/bnt_design"
+                        android:backgroundTint="@color/white"
                         android:text="1 неделя"
                         android:textColor="@android:color/black"
                         android:textColorHighlight="#F3F3F3"
@@ -337,14 +338,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/materialButton3"
                         android:layout_width="@dimen/_75sdp"
-                        android:layout_height="@dimen/_30sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_marginStart="240dp"
                         android:layout_marginTop="92dp"
                         android:layout_marginEnd="13dp"
-                        android:background="@drawable/bnt_design"
+                        android:backgroundTint="@color/white"
                         android:text="Месяц"
                         android:textColor="@android:color/black"
                         android:textColorHighlight="#F3F3F3"
@@ -355,12 +356,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/materialButton2"
                         android:layout_width="@dimen/_75sdp"
-                        android:layout_height="@dimen/_30sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_marginTop="92dp"
-                        android:background="@drawable/bnt_design"
+                        android:backgroundTint="@color/white"
                         android:text="2 недели "
                         android:textColor="@android:color/black"
                         android:textColorHighlight="#F3F3F3"
@@ -370,7 +371,7 @@
                         app:layout_constraintStart_toEndOf="@+id/bt_one_week"
                         app:layout_constraintTop_toBottomOf="@id/choiceMealCount" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_dishes_four"
                         android:layout_width="@dimen/_115sdp"
                         android:layout_height="@dimen/_38sdp"
@@ -398,7 +399,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
                         android:fontFamily="@font/involve_bold"
                         android:text="Твое примерное меню на месяц:"
                         android:textColor="@color/black"
@@ -408,7 +409,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/bt_one_week" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/dateButton"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_30sdp"
@@ -421,20 +422,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/dateButtonNext"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_marginStart="128dp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:backgroundTint="@color/custom_gray_bt"
                         android:fontFamily="@font/involve_medium"
                         android:text="Дата2"
                         android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/dateButtonNextNext"
+                        app:layout_constraintStart_toEndOf="@+id/dateButton"
                         app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/dateButtonNextNext"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_30sdp"
@@ -453,6 +454,7 @@
                         android:id="@+id/rv_order_home"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="68dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"

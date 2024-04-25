@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.historyProduct.HistoricalProductsFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_historical"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_180sdp"
+        android:translationZ="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="Доставка завершена"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_background_history" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginEnd="@dimen/_60sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="3 блюда"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginStart="@dimen/_60sdp"
+            android:fontFamily="@font/involve_medium"
+            android:text="9900Р"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

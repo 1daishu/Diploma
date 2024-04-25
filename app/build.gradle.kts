@@ -100,5 +100,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.11.1")
     //pinView
     implementation("io.github.chaosleung:pinview:1.4.4")
+    //timepicker
+    implementation("com.akexorcist:snap-time-picker:1.0.3")
+
 
 }

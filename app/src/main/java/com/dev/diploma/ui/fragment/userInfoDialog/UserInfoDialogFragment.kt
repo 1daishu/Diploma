@@ -16,6 +16,7 @@ class UserInfoDialogFragment : Fragment() {
     private var _binding: FragmentUserInfoDialogBinding? = null
     private lateinit var aut: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+
     private val binding
         get() = _binding!!
 

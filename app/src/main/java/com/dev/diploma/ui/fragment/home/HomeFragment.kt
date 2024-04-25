@@ -2,22 +2,41 @@ package com.dev.diploma.ui.fragment.home
 
 import OrderAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.dev.diploma.R
 import com.dev.diploma.data.network.dateFromJson.DateFromJson
 import com.dev.diploma.databinding.FragmentHomeBinding
+import com.dev.diploma.domain.model.User
 import com.dev.diploma.ui.activity.MainActivity
 import com.dev.diploma.ui.activity.SharedViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 
 class HomeFragment : Fragment() {
+    interface OnBackPressedListener {
+        fun onBackPressed()
+    }
+
+    private var onBackPressedListener: OnBackPressedListener? = null
+
+    fun setOnBackPressedListener(listener: OnBackPressedListener) {
+        onBackPressedListener = listener
+    }
 
     private var _binding: FragmentHomeBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -26,6 +45,12 @@ class HomeFragment : Fragment() {
     private var isButtonClicked = false
     private var startIndex = 0
     private var endIndex = 3
+    val user = FirebaseAuth.getInstance().currentUser
+    val uid = user?.uid
+    val myRef = uid?.let {
+        FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("users").child(it)
+    }
 
     private val binding
         get() = _binding!!
@@ -50,6 +75,28 @@ class HomeFragment : Fragment() {
         binding.btnDishesThree.setOnClickListener {
             isButtonClicked = !isButtonClicked
         }
+        setNameUser()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            onBackPressedListener?.onBackPressed()
+        }
+
+    }
+
+
+    private fun setNameUser() {
+        myRef?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(User::class.java)
+                val name = user?.firstName
+                val address = user?.address
+//                binding.txtGreeting.text = "Привет, " + name + "!"
+//                binding.txAddress.text = address
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
     }
 
     private fun updateDateBtOrders() {
@@ -91,6 +138,7 @@ class HomeFragment : Fragment() {
     private fun updateAdapterData() {
         val dateFromJson = DateFromJson()
         val mealItems = dateFromJson.loadMealItemsFromJson(requireContext())
+        Log.d("dateJsonHome", mealItems.toString())
         endIndex = minOf(endIndex, mealItems.size)
         val sublist = mealItems.subList(startIndex, endIndex)
         homeAdapter.submitMealItems(sublist)
@@ -103,6 +151,13 @@ class HomeFragment : Fragment() {
             adapter = homeAdapter
         }
         updateAdapterData()
+        orderProducts()
+    }
+
+    private fun orderProducts() {
+        binding.btnOrder.setOnClickListener {
+            findNavController().navigate(R.id.paymentFragment)
+        }
     }
 
     private fun observeButtonVisible() {

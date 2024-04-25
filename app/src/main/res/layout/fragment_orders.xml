@@ -38,6 +38,34 @@
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
 
+    <TextView
+        android:id="@+id/tx_current_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:text="Текущие"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood" />
+
+    <TextView
+        android:id="@+id/tx_history_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:text="Прошлые"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtDeliciousAndHealthyFood"
         android:layout_width="wrap_content"
@@ -50,148 +78,35 @@
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/txtGreeting" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_your_chance_order"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/txtDeliciousAndHealthyFood">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:src="@drawable/ic_shape" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_11sdp"
-            android:src="@drawable/ic_change_purple" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:fontFamily="@font/involve_medium"
-            android:text="@string/your_chance"
-            android:textColor="@color/custom_gray" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="3 блюда,1 месяц" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_meals_order"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_335sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/cv_your_chance_order">
+        app:layout_constraintTop_toBottomOf="@id/tx_current_product">
 
-        <ScrollView
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/currentFragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp"
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/involve_bold"
-                    android:text="Твое меню на месяц:"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_18ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/dateButton"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_40sdp"
-                    android:backgroundTint="@color/custom_gray_bt"
-                    android:fontFamily="@font/involve_medium"
-                    android:text="Дата"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/dateButtonNext"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginTop="52dp"
-                    android:backgroundTint="@color/custom_gray_bt"
-                    android:fontFamily="@font/involve_medium"
-                    android:text="Дата"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/dateButtonNextNext"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="240dp"
-                    android:layout_marginTop="52dp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:backgroundTint="@color/custom_gray_bt"
-                    android:fontFamily="@font/involve_medium"
-                    android:text="Дата"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_order"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dateButton"
-                    tools:layout_editor_absoluteX="27dp"
-                    tools:layout_editor_absoluteY="120dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"
-        android:backgroundTint="@color/custom_yellow"
-        android:fontFamily="@font/involve_bold"
-        android:text="ОТМЕНИТЬ"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/cv_meals_order" />
+        app:layout_constraintTop_toBottomOf="@id/tx_current_product">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/historyFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

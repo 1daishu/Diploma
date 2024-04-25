@@ -1,34 +1,35 @@
 package com.dev.diploma.ui.fragment.login
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
-import android.text.TextWatcher
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentLoginBinding
 import com.dev.diploma.domain.model.UserInfoAuth
 import com.dev.diploma.ui.activity.SharedViewModel
+import com.dev.diploma.ui.fragment.home.HomeFragment
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.cli.Options
 import com.google.firebase.database.FirebaseDatabase
 import java.util.concurrent.TimeUnit
 
+
 class LoginFragment : Fragment() {
+    interface OnBackPressedListener {
+        fun onBackPressed()
+    }
+
+    private var onBackPressedListener: HomeFragment.OnBackPressedListener? = null
 
     private var _binding: FragmentLoginBinding? = null
     private val viewModel: LoginViewModel by activityViewModels()
@@ -55,7 +56,7 @@ class LoginFragment : Fragment() {
         observeAppendText()
         observeAppendTextPin()
         mAuth = FirebaseAuth.getInstance()
-        binding.verivCodetxt.setOnClickListener {
+        binding.txtCodeVerify.setOnClickListener {
             if (TextUtils.isEmpty(binding.editTextPhone.text.toString())) {
                 Toast.makeText(requireContext(), "Введите номер", Toast.LENGTH_SHORT).show()
             } else {
@@ -65,11 +66,14 @@ class LoginFragment : Fragment() {
             }
         }
         binding.checkCode.setOnClickListener {
-            if (TextUtils.isEmpty(binding.verivCodetxt.text.toString())) {
+            if (TextUtils.isEmpty(binding.txtCodeVerify.text.toString())) {
                 Toast.makeText(requireContext(), "Введите код", Toast.LENGTH_SHORT).show()
             } else {
                 verifyCode(binding.pinView.text.toString())
             }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            onBackPressedListener?.onBackPressed()
         }
     }
 
@@ -101,7 +105,10 @@ class LoginFragment : Fragment() {
                         .addOnCompleteListener { userDataTask ->
                             if (userDataTask.isSuccessful) {
                                 onLoginSuccess()
-                                findNavController().navigate(R.id.homeFragment)
+                                val navController = findNavController()
+                                navController.navigate(R.id.action_loginFragment_to_homeFragment)
+                                viewModel.clearText()
+                                viewModel.clearTextPin()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -122,6 +129,7 @@ class LoginFragment : Fragment() {
             }
         }
     }
+
 
     private fun sendVerificationCode(number: String) {
         val options = PhoneAuthOptions.newBuilder(mAuth)
@@ -148,7 +156,6 @@ class LoginFragment : Fragment() {
                 binding.pinView.setText(code)
                 verifyCode(code)
             } else {
-                Log.e("verify", "Received null code in onVerificationCompleted")
                 Toast.makeText(
                     requireContext(),
                     "Неверный код, повторите попытку заново",
@@ -162,13 +169,13 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun observeAppendText() {
+    private fun observeAppendText() {
         viewModel.textLiViewModel.observe(viewLifecycleOwner) { number ->
             binding.editTextPhone.setText(number)
         }
     }
 
-    fun observeAppendTextPin() {
+    private fun observeAppendTextPin() {
         viewModel.verifyCodeLiveData.observe(viewLifecycleOwner) { number ->
             binding.pinView.setText(number)
         }
