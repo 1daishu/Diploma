@@ -25,11 +25,6 @@ import java.util.concurrent.TimeUnit
 
 
 class LoginFragment : Fragment() {
-    interface OnBackPressedListener {
-        fun onBackPressed()
-    }
-
-    private var onBackPressedListener: HomeFragment.OnBackPressedListener? = null
 
     private var _binding: FragmentLoginBinding? = null
     private val viewModel: LoginViewModel by activityViewModels()
@@ -72,9 +67,6 @@ class LoginFragment : Fragment() {
                 verifyCode(binding.pinView.text.toString())
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            onBackPressedListener?.onBackPressed()
-        }
     }
 
     private fun onLoginSuccess() {
@@ -106,7 +98,7 @@ class LoginFragment : Fragment() {
                             if (userDataTask.isSuccessful) {
                                 onLoginSuccess()
                                 val navController = findNavController()
-                                navController.navigate(R.id.action_loginFragment_to_homeFragment)
+                                navController.navigate(R.id.homeFragment)
                                 viewModel.clearText()
                                 viewModel.clearTextPin()
                             } else {

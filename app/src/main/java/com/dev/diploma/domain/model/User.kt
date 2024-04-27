@@ -7,7 +7,8 @@ data class User(
     val address: String,
     val payment: String,
     val cvv: String,
-    val term: String
+    val term: String,
+    val products: List<Product> = emptyList()
 ) {
-    constructor() : this("", "", "", "", "", "", "")
+    constructor() : this("", "", "", "", "", "", "", emptyList())
 }

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentUserInfoDialogBinding
 import com.dev.diploma.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +38,13 @@ class UserInfoDialogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        changeInfoUser()
+        binding.tvBackChangeDate.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+    }
+
+    private fun changeInfoUser() {
         aut = FirebaseAuth.getInstance()
         val uid = aut.currentUser?.uid
         databaseReference =

@@ -108,5 +108,24 @@
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/bt_new_order"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:backgroundTint="@color/custom_yellow"
+        android:elevation="@dimen/_2sdp"
+        android:fontFamily="@font/involve_bold"
+        android:text="НОВЫЙ ЗАКАЗ"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,21 +44,8 @@ class CurrentProductsFragment : Fragment() {
         extracted()
         prepareRecyclerView()
         updateDateBtOrders()
-        orderViewModel.isOrderPlaced.observe(viewLifecycleOwner) { isOrderPlaced ->
-            if (isOrderPlaced) {
-                binding.constraintCurrent.visibility = View.VISIBLE
-                binding.imgMessageFirstOrders.visibility = View.GONE
-                binding.imgNewOrder.visibility = View.GONE
-                binding.cvMealsOrder.visibility = View.VISIBLE
-                binding.rvOrder.visibility = View.VISIBLE
-                binding.btCancelOrders.visibility = View.VISIBLE
-            } else {
-                TODO()
-            }
-        }
-        binding.btNewOrder.setOnClickListener {
-            findNavController().navigate(R.id.homeFragment)
-        }
+
+
     }
 
     private fun updateDateBtOrders() {

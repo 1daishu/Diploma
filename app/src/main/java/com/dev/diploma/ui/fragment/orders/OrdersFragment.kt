@@ -22,8 +22,7 @@ class OrdersFragment : Fragment() {
         get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentOrdersBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -33,6 +32,11 @@ class OrdersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         displayCurrentProductsFragment()
         switchFragments()
+        binding.btNewOrder.setOnClickListener {
+            val navController = findNavController()
+            navController.popBackStack(R.id.ordersFragment, false)
+            navController.navigate(R.id.homeFragment)
+        }
     }
 
     private fun displayCurrentProductsFragment() {
@@ -40,8 +44,7 @@ class OrdersFragment : Fragment() {
         val transaction = fragmentManager.beginTransaction()
         val currentFragment = CurrentProductsFragment()
         transaction.replace(
-            R.id.currentFragmentContainer,
-            currentFragment
+            R.id.currentFragmentContainer, currentFragment
         )
         transaction.commit()
     }

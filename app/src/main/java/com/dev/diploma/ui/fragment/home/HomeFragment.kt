@@ -28,15 +28,7 @@ import java.util.Locale
 
 
 class HomeFragment : Fragment() {
-    interface OnBackPressedListener {
-        fun onBackPressed()
-    }
 
-    private var onBackPressedListener: OnBackPressedListener? = null
-
-    fun setOnBackPressedListener(listener: OnBackPressedListener) {
-        onBackPressedListener = listener
-    }
 
     private var _binding: FragmentHomeBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -76,19 +68,15 @@ class HomeFragment : Fragment() {
             isButtonClicked = !isButtonClicked
         }
         setNameUser()
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            onBackPressedListener?.onBackPressed()
-        }
-
     }
 
 
     private fun setNameUser() {
         myRef?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val user = dataSnapshot.getValue(User::class.java)
-                val name = user?.firstName
-                val address = user?.address
+               // val user = dataSnapshot.getValue(User::class.java)
+                //val name = user?.firstName
+                //val address = user?.address
 //                binding.txtGreeting.text = "Привет, " + name + "!"
 //                binding.txAddress.text = address
             }
