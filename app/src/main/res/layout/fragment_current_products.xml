@@ -103,7 +103,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/dateButton"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_30sdp"
@@ -116,24 +116,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/dateButtonNext"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="128dp"
                     android:layout_marginTop="52dp"
                     android:backgroundTint="@color/custom_gray_bt"
                     android:fontFamily="@font/involve_medium"
                     android:text="Дата"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/dateButtonNextNext"
+                    app:layout_constraintStart_toEndOf="@+id/dateButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/dateButtonNextNext"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="240dp"
                     android:layout_marginTop="52dp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:backgroundTint="@color/custom_gray_bt"
@@ -141,7 +140,6 @@
                     android:text="Дата"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -192,6 +190,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/bt_new_order"
         android:layout_width="0dp"

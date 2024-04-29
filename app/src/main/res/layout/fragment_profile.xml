@@ -91,7 +91,7 @@
             android:layout_marginStart="@dimen/_42sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="@font/involve_medium"
-            android:text="Даниил Неизвестный"
+            android:text="Заполните данные"
             android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton

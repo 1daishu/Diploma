@@ -1,20 +1,18 @@
 package com.dev.diploma.ui.fragment.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentAuthBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 
 class AuthFragment : Fragment() {
     private var _binding: FragmentAuthBinding? = null
-    private lateinit var auth: FirebaseAuth
     val binding
         get() = _binding!!
 
@@ -33,8 +31,8 @@ class AuthFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

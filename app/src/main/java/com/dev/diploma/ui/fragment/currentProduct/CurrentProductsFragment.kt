@@ -28,7 +28,6 @@ import java.util.Locale
 
 class CurrentProductsFragment : Fragment() {
     private var _binding: FragmentCurrentProductsBinding? = null
-    private val orderViewModel: PaymentViewModel by activityViewModels()
     private val viewModel: OrdersViewModel by viewModels()
     private lateinit var currentProductAdapter: CurrentProductsAdapter
     private var startIndex = 0
@@ -201,12 +200,6 @@ class CurrentProductsFragment : Fragment() {
         val nextNextDayCalendar = viewModel.getCurrentDatePlusTwoDay()
         val dateFormatTwo = SimpleDateFormat("dd.MM", Locale.getDefault())
         binding.dateButtonNextNext.text = dateFormatTwo.format(nextNextDayCalendar.time)
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
 }

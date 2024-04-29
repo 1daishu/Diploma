@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -58,15 +59,30 @@ class ProfileFragment : Fragment() {
                 val user = dataSnapshot.getValue(User::class.java)
                 val address = user?.address
                 val numberCard = user?.payment
-                val name = user?.firstName.toString()
-                val lastName = user?.lastName.toString()
-                binding.tvAddressProfile.text = address.toString()
-                binding.numberCard.text = numberCard.toString()
-                binding.nameAndLastName.text = name + " " + lastName
+                val name = user?.firstName
+                val lastName = user?.lastName
+                if (name != null && lastName != null) {
+                    binding.nameAndLastName.text = "$name $lastName"
+                } else {
+                    binding.nameAndLastName.text = ""
+                }
+
+                if (address != null) {
+                    binding.tvAddressProfile.text = address.toString()
+                } else {
+                    binding.tvAddressProfile.text = ""
+                }
+
+                if (numberCard != null) {
+                    binding.numberCard.text = numberCard.toString()
+                } else {
+                    binding.numberCard.text = ""
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Обработка ошибки при чтении данных
+                Toast.makeText(requireContext(), "Повторите попытку позже", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }
@@ -79,9 +95,9 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
+
 }

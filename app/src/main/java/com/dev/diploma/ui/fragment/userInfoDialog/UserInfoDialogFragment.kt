@@ -10,14 +10,24 @@ import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentUserInfoDialogBinding
 import com.dev.diploma.domain.model.User
+import com.dev.diploma.domain.model.UserInfoAuth
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class UserInfoDialogFragment : Fragment() {
     private var _binding: FragmentUserInfoDialogBinding? = null
     private lateinit var aut: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+    private var user = FirebaseAuth.getInstance().currentUser
+    private var uid = user?.uid
+    private var myRef = uid?.let {
+        FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("users_num_auth").child(it)
+    }
 
     private val binding
         get() = _binding!!
@@ -42,6 +52,26 @@ class UserInfoDialogFragment : Fragment() {
         binding.tvBackChangeDate.setOnClickListener {
             findNavController().navigate(R.id.profileFragment)
         }
+        setNumber()
+    }
+
+    private fun setNumber() {
+        myRef?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val numberUser = snapshot.getValue(UserInfoAuth::class.java)
+                val number = numberUser?.number
+                if (number != null) {
+                    binding.edNumberPhone.text = "Номер телефона\n$number"
+                } else {
+                    binding.edNumberPhone.text = ""
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun changeInfoUser() {
@@ -91,7 +121,6 @@ class UserInfoDialogFragment : Fragment() {
 
             if (uid != null) {
                 try {
-                    // Обновляем только конкретные поля в базе данных
                     databaseReference.child(uid).updateChildren(updates)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
@@ -120,8 +149,8 @@ class UserInfoDialogFragment : Fragment() {
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

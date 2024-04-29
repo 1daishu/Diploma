@@ -1,13 +1,10 @@
 package com.dev.diploma.ui.fragment.home
 
-import com.dev.diploma.ui.adapter.OrderAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -19,20 +16,17 @@ import com.dev.diploma.databinding.FragmentHomeBinding
 import com.dev.diploma.domain.model.User
 import com.dev.diploma.ui.activity.MainActivity
 import com.dev.diploma.ui.activity.SharedViewModel
-import com.google.firebase.Firebase
+import com.dev.diploma.ui.adapter.OrderAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.database
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 
 class HomeFragment : Fragment() {
-
-    private var _binding: FragmentHomeBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: HomeViewModel by viewModels()
     private var homeAdapter: OrderAdapter = OrderAdapter()
@@ -43,8 +37,13 @@ class HomeFragment : Fragment() {
     private var isMonthButtonClicked = false
     private var isTwoWeekMonthButtonClicked = false
     private var endIndex = 3
-
-
+    private var user = FirebaseAuth.getInstance().currentUser
+    private var uid = user?.uid
+    private var myRef = uid?.let {
+        FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("users").child(it)
+    }
+    private var _binding: FragmentHomeBinding? = null
     private val binding
         get() = _binding!!
 
@@ -65,8 +64,15 @@ class HomeFragment : Fragment() {
         switchMeals()
         setNameUser()
         switchDate()
+        binding.btnOrder.setOnClickListener {
+            if ((isButtonClicked || isButtonClickedTwo) && (isWeekButtonClicked || isMonthButtonClicked || isTwoWeekMonthButtonClicked)) {
+                findNavController().navigate(R.id.paymentFragment)
+            } else {
+                Toast.makeText(requireContext(), "Выберите интервал или время", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
-
 
     private fun switchDate() {
         binding.btOneWeek.setOnClickListener {
@@ -134,31 +140,37 @@ class HomeFragment : Fragment() {
         binding.btnDishesFour.setOnClickListener {
             isButtonClickedTwo = true
             isButtonClicked = false
-            binding.btnDishesThree.setBackgroundResource(R.color.white)
-            binding.btnDishesFour.setBackgroundResource(R.color.custom_yellow)
-            sharedViewModel.setButtonClicked(false)
-            sharedViewModel.setButtonClickedTwo(true)
+            if (isButtonClickedTwo) {
+                binding.btnDishesThree.setBackgroundResource(R.color.white)
+                binding.btnDishesFour.setBackgroundResource(R.color.custom_yellow)
+                sharedViewModel.setButtonClicked(false)
+                sharedViewModel.setButtonClickedTwo(true)
+            } else {
+                binding.btnDishesFour.setBackgroundResource(R.color.white)
+            }
         }
     }
 
     private fun setNameUser() {
-        val user = FirebaseAuth.getInstance().currentUser
-        val uid = user?.uid
-        val myRef = uid?.let {
-            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users").child(it)
-        }
         myRef?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
                 val name = user?.firstName
                 val address = user?.address
-                binding.txtGreeting.text = "Привет, " + name + "!"
-                binding.txAddress.text = address.toString()
+                if (name != null) {
+                    binding.txtGreeting.text = "Привет, $name!"
+                } else {
+                    binding.txtGreeting.text = "Привет!"
+                }
+                if (address != null) {
+                    binding.txAddress.text = address.toString()
+                } else {
+                    binding.txAddress.text = "Адрес не указан"
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO()
+                Toast.makeText(context, "Ошибка,повторите попытку позже", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -242,11 +254,6 @@ class HomeFragment : Fragment() {
         val nextNextDayCalendar = viewModel.getCurrentDatePlusTwoDay()
         val dateFormatTwo = SimpleDateFormat("dd.MM", Locale.getDefault())
         binding.dateButtonNextNext.text = dateFormatTwo.format(nextNextDayCalendar.time)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
 }

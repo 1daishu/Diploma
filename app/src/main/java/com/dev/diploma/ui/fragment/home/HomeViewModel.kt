@@ -12,7 +12,6 @@ import java.util.TimerTask
 
 class HomeViewModel : ViewModel() {
     private val currentDateLiveData = MutableLiveData<String>()
-
     init {
         updateDate()
         Timer().scheduleAtFixedRate(
@@ -56,4 +55,5 @@ class HomeViewModel : ViewModel() {
         calendar.set(Calendar.MILLISECOND, 0)
         return calendar.time
     }
+
 }

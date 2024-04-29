@@ -9,23 +9,22 @@
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:focusable="false"
         android:fontFamily="@font/involve_medium"
-        android:gravity="center"
         android:hint="@string/enter_number"
         android:inputType="phone"
         android:maxLength="12"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_14sdp"
         app:layout_constraintBottom_toTopOf="@+id/txt_code_verify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.887" />
 
     <TextView
         android:id="@+id/txt_fast"
