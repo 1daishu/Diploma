@@ -31,7 +31,7 @@ class UserInfoDialogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUserInfoDialogBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentUserInfoDialogBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -51,41 +51,74 @@ class UserInfoDialogFragment : Fragment() {
             FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("users")
         binding.saveButton.setOnClickListener {
-            val userName = binding.edName.text.toString()
+            val firstName = binding.edName.text.toString()
             val lastName = binding.edLastName.text.toString()
             val email = binding.edMail.text.toString()
             val address = binding.edAddress.text.toString()
             val payment = binding.edPayment.text.toString()
             val cvv = binding.edPaymentCvv.text.toString()
             val term = binding.edPaymentTerm.text.toString()
-            val user = User(userName, lastName, email, address, payment, cvv, term)
+
+            val updates = mutableMapOf<String, Any>()
+
+            if (firstName.isNotEmpty()) {
+                updates["firstName"] = firstName
+            }
+
+            if (lastName.isNotEmpty()) {
+                updates["lastName"] = lastName
+            }
+
+            if (email.isNotEmpty()) {
+                updates["email"] = email
+            }
+
+            if (address.isNotEmpty()) {
+                updates["address"] = address
+            }
+
+            if (payment.isNotEmpty()) {
+                updates["payment"] = payment
+            }
+
+            if (cvv.isNotEmpty()) {
+                updates["cvv"] = cvv
+            }
+
+            if (term.isNotEmpty()) {
+                updates["term"] = term
+            }
+
             if (uid != null) {
                 try {
-                    databaseReference.child(uid).setValue(user).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(
-                                requireContext(),
-                                "Данные добавлены/изменены",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Введите еще раз",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                    // Обновляем только конкретные поля в базе данных
+                    databaseReference.child(uid).updateChildren(updates)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Данные успешно обновлены",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Не удалось обновить данные",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
-                    }
                 } catch (e: Exception) {
                     Toast.makeText(
                         requireContext(),
-                        "Error: ${e.message}",
+                        "Ошибка: ${e.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

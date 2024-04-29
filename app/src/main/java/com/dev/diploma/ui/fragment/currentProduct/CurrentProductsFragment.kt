@@ -1,20 +1,27 @@
 package com.dev.diploma.ui.fragment.currentProduct
 
-import OrderAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.diploma.R
-import com.dev.diploma.data.network.dateFromJson.DateFromJson
 import com.dev.diploma.databinding.FragmentCurrentProductsBinding
+import com.dev.diploma.domain.model.Product
+import com.dev.diploma.domain.model.User
+import com.dev.diploma.ui.adapter.CurrentProductsAdapter
 import com.dev.diploma.ui.fragment.orders.OrdersViewModel
 import com.dev.diploma.ui.fragment.payment.PaymentViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -23,10 +30,9 @@ class CurrentProductsFragment : Fragment() {
     private var _binding: FragmentCurrentProductsBinding? = null
     private val orderViewModel: PaymentViewModel by activityViewModels()
     private val viewModel: OrdersViewModel by viewModels()
-    private lateinit var orderAdapter: OrderAdapter
-    private var currentIndex = 0
-    private val itemsPerPage = 3
-
+    private lateinit var currentProductAdapter: CurrentProductsAdapter
+    private var startIndex = 0
+    private var endIndex = 3
 
     private val binding
         get() = _binding!!
@@ -35,7 +41,7 @@ class CurrentProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCurrentProductsBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentCurrentProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,37 +49,146 @@ class CurrentProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         extracted()
         prepareRecyclerView()
-        updateDateBtOrders()
-
-
+        productWithdrawal()
+        binding.btNewOrder.setOnClickListener {
+            val navController = findNavController()
+            navController.popBackStack(R.id.ordersFragment, false)
+            navController.navigate(R.id.homeFragment)
+        }
+        setChangeMeals()
+        getProductFirebase()
     }
 
-    private fun updateDateBtOrders() {
-        binding.dateButtonNext.setOnClickListener {
-            currentIndex += itemsPerPage
-            updateAdapterData(currentIndex, itemsPerPage)
+    private fun getProductFirebase() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val myRef = uid?.let {
+            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users").child(it)
         }
 
-        binding.dateButtonNextNext.setOnClickListener {
-            currentIndex += itemsPerPage
-            updateAdapterData(currentIndex, itemsPerPage)
-        }
+        myRef?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(User::class.java)
+                val countMeal = user?.time_product
+                if (countMeal?.contains("4 блюда") == true) {
+                    binding.dateButton.setOnClickListener {
+                        startIndex = 0
+                        endIndex = 4
+                        productWithdrawal()
+
+                    }
+                    binding.dateButtonNext.setOnClickListener {
+                        startIndex = 5
+                        endIndex = 9
+                        productWithdrawal()
+
+                    }
+                    binding.dateButtonNextNext.setOnClickListener {
+                        startIndex = 10
+                        endIndex = 14
+                        productWithdrawal()
+
+                    }
+                }
+                if (countMeal?.contains("3 блюда") == true) {
+                    binding.dateButton.setOnClickListener {
+                        startIndex = 0
+                        endIndex = 3
+                        productWithdrawal()
+
+                    }
+                    binding.dateButtonNext.setOnClickListener {
+                        startIndex = 4
+                        endIndex = 7
+                        productWithdrawal()
+                    }
+                    binding.dateButtonNextNext.setOnClickListener {
+                        startIndex = 8
+                        endIndex = 11
+                        productWithdrawal()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseData", "Failed to read count meal value.", error.toException())
+            }
+        })
     }
 
-    private fun updateAdapterData(startIndex: Int, count: Int) {
-        val dateFromJson = DateFromJson()
-        val mealItems = dateFromJson.loadMealItemsFromJson(requireContext())
-        val sublist = mealItems.subList(startIndex, startIndex + count)
-        orderAdapter.submitMealItems(sublist)
+    private fun setChangeMeals() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val myRef = uid?.let {
+            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users").child(it)
+        }
+        myRef?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(User::class.java)
+                val time_product = user?.time_product
+                binding.txUserChange.text = time_product
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
+    }
+
+    private fun productWithdrawal() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val database =
+            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+        val userProductsRef = database.getReference("users").child(uid!!).child("products")
+        userProductsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (_binding != null) {
+                    val productList = mutableListOf<Product>()
+                    for (productSnapshot in snapshot.children) {
+                        val product = productSnapshot.getValue(Product::class.java)
+                        product?.let { productList.add(it) }
+                    }
+
+                    if (productList.isEmpty()) {
+                        _binding!!.cvYourChanceOrder.visibility = View.GONE
+                        _binding!!.constraintCurrent.visibility = View.GONE
+                        _binding!!.btCancelOrders.visibility = View.GONE
+                        _binding!!.cvNotHaveOrderMessage.visibility = View.VISIBLE
+                        _binding!!.imgNewOrder.visibility = View.VISIBLE
+                        _binding!!.cvMealsOrder.visibility = View.GONE
+                        _binding!!.btNewOrder.visibility = View.GONE
+                    } else {
+                        val filteredList = productList.filterIndexed { index, _ ->
+                            index in startIndex until endIndex
+                        }
+                        _binding!!.cvYourChanceOrder.visibility = View.VISIBLE
+                        _binding!!.constraintCurrent.visibility = View.VISIBLE
+                        _binding!!.btCancelOrders.visibility = View.VISIBLE
+                        _binding!!.cvNotHaveOrderMessage.visibility = View.GONE
+                        _binding!!.imgNewOrder.visibility = View.GONE
+                        _binding!!.cvMealsOrder.visibility = View.VISIBLE
+                        currentProductAdapter.submitList(productList)
+                        _binding!!.btNewOrder.visibility = View.INVISIBLE
+                        currentProductAdapter.submitList(filteredList)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Обработка ошибки, если требуется
+            }
+        })
     }
 
     private fun prepareRecyclerView() {
-        orderAdapter = OrderAdapter()
+        currentProductAdapter = CurrentProductsAdapter()
         binding.rvOrder.apply {
             layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
-            adapter = orderAdapter
+            adapter = currentProductAdapter
         }
-        updateAdapterData(currentIndex, itemsPerPage)
     }
 
     private fun extracted() {

@@ -7,20 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.dev.diploma.R
 import com.dev.diploma.data.network.dateFromJson.DateFromJson
 import com.dev.diploma.databinding.FragmentPaymentBinding
-import com.dev.diploma.domain.model.MealItem
-import com.dev.diploma.ui.activity.TimeIntervalDialog
+import com.dev.diploma.ui.activity.SharedViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class PaymentFragment : Fragment() {
     private var _binding: FragmentPaymentBinding? = null
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
     private val binding
@@ -39,8 +34,53 @@ class PaymentFragment : Fragment() {
         binding.btPlaceOrder.setOnClickListener {
             placeOrder()
         }
-
+        if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
+            addDataToDatabase("4 блюда ,1 неделя")
+        }
+        if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
+            addDataToDatabase("4 блюда ,2 недели")
+        }
+        if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
+            addDataToDatabase("4 блюда ,1 месяц")
+        }
+        if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
+            addDataToDatabase("3 блюда ,1 неделя")
+        }
+        if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
+            addDataToDatabase("3 блюда ,2 недели")
+        }
+        if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
+            addDataToDatabase("3 блюда ,1 месяц")
+        }
     }
+
+    private fun addDataToDatabase(data: String) {
+        val databaseReference =
+            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users")
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        uid?.let { userId ->
+            val userReference = databaseReference.child(userId)
+            val updates = mutableMapOf<String, Any>()
+            updates["time_product"] = data
+            userReference.updateChildren(updates)
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "Time product data added successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed to add time product data: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
+    }
+
 
     private fun placeOrder() {
         val dateFromJson = DateFromJson()
@@ -50,15 +90,16 @@ class PaymentFragment : Fragment() {
             val uid = currentUser.uid
             val database =
                 FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
-            val reference = database.getReference("users").child(uid).child("products")
-            reference.setValue(mealItems)
+            val reference = database.getReference("users").child(uid)
+            val updates = mutableMapOf<String, Any>()
+            updates["products"] = mealItems
+            reference.updateChildren(updates)
                 .addOnSuccessListener {
                     Toast.makeText(
                         requireContext(),
                         "Order placed successfully",
                         Toast.LENGTH_SHORT
                     ).show()
-                    // Navigate to success screen or perform other actions as needed
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(

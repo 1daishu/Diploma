@@ -20,7 +20,7 @@ class SupportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSupportBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentSupportBinding.inflate(inflater, container, false)
         return binding.root
     }
 

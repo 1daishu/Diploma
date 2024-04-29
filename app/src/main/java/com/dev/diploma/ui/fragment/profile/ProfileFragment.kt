@@ -25,35 +25,30 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var userInfoDialogFragment: UserInfoDialogFragment
-    val user = FirebaseAuth.getInstance().currentUser
-    val uid = user?.uid
-    val myRef = uid?.let {
+    private val user = FirebaseAuth.getInstance().currentUser
+    private val uid = user?.uid
+    private val myRef = uid?.let {
         FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("users").child(it)
     }
     private val binding
         get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userInfoDialogFragment = UserInfoDialogFragment()
+        observeButtonVisibleProfile()
         binding.btExitProfile.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)
             sharedViewModel.navigateToHome()
-            observeButtonVisibleProfile()
         }
         binding.btnChangeDate.setOnClickListener {
             findNavController().navigate(R.id.userInfoDialogFragment)
@@ -74,8 +69,6 @@ class ProfileFragment : Fragment() {
                 // Обработка ошибки при чтении данных
             }
         })
-
-
     }
 
     private fun observeButtonVisibleProfile() {

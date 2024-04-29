@@ -1,109 +1,401 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/_500sdp"
     tools:context=".ui.fragment.payment.PaymentFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/_20sdp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/_20sdp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_20sdp" />
 
-    <TextView
-        android:id="@+id/tx_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Адрес доставки"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_cardViewAddressView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:translationZ="@dimen/_4sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/tx_address">
-
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/_20sdp" />
 
         <TextView
-            android:id="@+id/tx_adress_delivery"
+            android:id="@+id/tx_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="4dp"
+            android:text="Адрес доставки"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_cardViewAddressView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:text="Москва" />
+            android:translationZ="@dimen/_4sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/tx_address">
 
-        <ImageView
+            <TextView
+                android:id="@+id/tx_adress_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Москва" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:src="@drawable/ic_shape" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/ic_mark" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_cardViewAddressView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Подъед" />
+
+            <EditText
+                android:id="@+id/ed_number_entrance"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:hint="Номер"
+                android:textSize="@dimen/_10sdp"
+                android:translationZ="4dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_cardViewAddressView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/_25sdp"
+                android:text="Дом" />
+
+            <EditText
+                android:id="@+id/ed_home"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:hint="Номер"
+                android:textSize="@dimen/_10sdp"
+                android:translationZ="4dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="256dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintTop_toBottomOf="@id/cv_cardViewAddressView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Квартира">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_number_flat"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:hint="Номер"
+                android:textSize="@dimen/_10sdp"
+                android:translationZ="4dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_time_address"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/tx_first_order">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Дата первой доставки"
+                android:textColor="@color/custom_gray" />
+
+            <TextView
+                android:id="@+id/tx_snap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:clickable="true"
+                android:text="Выберите дату"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/tx_first_order" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_time_address">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Интервал доставки"
+                android:textColor="@color/custom_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="18dp"
+                android:clickable="true"
+                android:text="Выберите время" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tx_first_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:src="@drawable/ic_shape" />
+            android:layout_marginTop="65dp"
+            android:text="Первая доставка"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_cardViewAddressView" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/tx_contact_information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:src="@drawable/ic_mark" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Контактные данные"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            app:layout_goneMarginTop="@dimen/_10sdp" />
 
-    <TextView
-        android:id="@+id/tx_first_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Первая доставка"
-        android:textSize="@dimen/_18ssp"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/cv_cardViewAddressView" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_name_user"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/tx_contact_information"
+            tools:layout_editor_absoluteY="382dp">
 
-    <TextView
-        android:id="@+id/tx_snap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:clickable="true"
-        android:text="Выберите время"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/tx_first_order" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Имя"
+                android:textColor="@color/custom_gray" />
 
-    <Button
-        android:id="@+id/bt_place_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="Оформить заказ"
-        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/tx_snap" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:text="Даниил"
+                android:textSize="@dimen/_16sdp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_mail_user"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_name_user"
+            tools:layout_editor_absoluteY="442dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="Почта"
+                android:textColor="@color/custom_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:text="почта"
+                android:textSize="@dimen/_16sdp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_contact_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Способ оплаты заказа"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_mail_user"
+            tools:layout_editor_absoluteY="504dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_card_payment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/tv_contact_information"
+            tools:layout_editor_absoluteY="442dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Картой онлайн"
+                android:textSize="@dimen/_12sdp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_card_offline"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_card_payment"
+            tools:layout_editor_absoluteY="442dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Наличными при получение"
+                android:textSize="@dimen/_12sdp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_one"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_card_offline">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Картой при получение" />
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/bt_place_order"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:backgroundTint="@color/custom_yellow"
+            android:text="ОФОРМИТЬ ЗАКАЗ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/cv_one" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

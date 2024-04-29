@@ -16,7 +16,7 @@ class HistoricalProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHistoricalProductsBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentHistoricalProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

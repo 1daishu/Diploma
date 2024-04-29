@@ -6,8 +6,10 @@ data class Product(
     val calories: String,
     val protein: Int,
     val fat: Int,
-    val carbohydrates: Int,
-    val photo_url: String
+    val carbohydrates: String,
+    val photo_url: String,
+    val quantity: String,
+    val time: String
 ) {
-    constructor() : this(0, "", "", 0, 0, 0, "")
+    constructor() : this(0, "", "", 0, 0, "", "", "", "")
 }

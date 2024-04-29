@@ -1,3 +1,5 @@
+package com.dev.diploma.ui.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +10,7 @@ import com.dev.diploma.databinding.MealElementBinding
 import com.dev.diploma.domain.model.MealItem
 
 class OrderAdapter : ListAdapter<MealItem, OrderAdapter.OrderViewHolder>(OrderDiffUtil) {
-    class OrderViewHolder(private val binding: MealElementBinding) :
+    inner class OrderViewHolder(private val binding: MealElementBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(meal: MealItem) {
             binding.apply {

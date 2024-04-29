@@ -1,12 +1,13 @@
 package com.dev.diploma.ui.fragment.home
 
-import OrderAdapter
+import com.dev.diploma.ui.adapter.OrderAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -18,31 +19,31 @@ import com.dev.diploma.databinding.FragmentHomeBinding
 import com.dev.diploma.domain.model.User
 import com.dev.diploma.ui.activity.MainActivity
 import com.dev.diploma.ui.activity.SharedViewModel
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 
 class HomeFragment : Fragment() {
 
-
     private var _binding: FragmentHomeBinding? = null
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var homeAdapter: OrderAdapter
+    private var homeAdapter: OrderAdapter = OrderAdapter()
     private var isButtonClicked = false
+    private var isButtonClickedTwo = false
     private var startIndex = 0
+    private var isWeekButtonClicked = false
+    private var isMonthButtonClicked = false
+    private var isTwoWeekMonthButtonClicked = false
     private var endIndex = 3
-    val user = FirebaseAuth.getInstance().currentUser
-    val uid = user?.uid
-    val myRef = uid?.let {
-        FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
-            .getReference("users").child(it)
-    }
+
 
     private val binding
         get() = _binding!!
@@ -51,7 +52,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -61,24 +62,99 @@ class HomeFragment : Fragment() {
         observeButtonVisible()
         updateDateBtOrders()
         prepareRecyclerView()
-        binding.btnDishesFour.setOnClickListener {
-            isButtonClicked = !isButtonClicked
-        }
-        binding.btnDishesThree.setOnClickListener {
-            isButtonClicked = !isButtonClicked
-        }
+        switchMeals()
         setNameUser()
+        switchDate()
     }
 
 
+    private fun switchDate() {
+        binding.btOneWeek.setOnClickListener {
+            isWeekButtonClicked = !isWeekButtonClicked
+            if (isWeekButtonClicked) {
+                binding.btOneWeek.setBackgroundResource(R.color.custom_yellow)
+                binding.materialButton2.setBackgroundResource(R.color.white)
+                binding.materialButton3.setBackgroundResource(R.color.white)
+                isTwoWeekMonthButtonClicked = false
+                isMonthButtonClicked = false
+                sharedViewModel.setWeekButtonClicked(true)
+                sharedViewModel.setMonthButtonClicked(false)
+                sharedViewModel.setTwoWeekMonthButtonClicked(false)
+            } else {
+                binding.btOneWeek.setBackgroundResource(R.color.white)
+            }
+        }
+        binding.materialButton2.setOnClickListener {
+            isMonthButtonClicked = !isMonthButtonClicked
+            if (isMonthButtonClicked) {
+                binding.materialButton2.setBackgroundResource(R.color.custom_yellow)
+                binding.btOneWeek.setBackgroundResource(R.color.white)
+                binding.materialButton3.setBackgroundResource(R.color.white)
+                isWeekButtonClicked = false
+                isTwoWeekMonthButtonClicked = false
+                sharedViewModel.setWeekButtonClicked(false)
+                sharedViewModel.setMonthButtonClicked(false)
+                sharedViewModel.setTwoWeekMonthButtonClicked(true)
+            } else {
+                binding.materialButton2.setBackgroundResource(R.color.white)
+            }
+        }
+
+        binding.materialButton3.setOnClickListener {
+            isTwoWeekMonthButtonClicked = !isTwoWeekMonthButtonClicked
+            if (isTwoWeekMonthButtonClicked) {
+                binding.materialButton3.setBackgroundResource(R.color.custom_yellow)
+                binding.btOneWeek.setBackgroundResource(R.color.white)
+                binding.materialButton2.setBackgroundResource(R.color.white)
+                isWeekButtonClicked = false
+                isMonthButtonClicked = false
+                sharedViewModel.setWeekButtonClicked(false)
+                sharedViewModel.setMonthButtonClicked(true)
+                sharedViewModel.setTwoWeekMonthButtonClicked(false)
+            } else {
+                binding.materialButton3.setBackgroundResource(R.color.white)
+            }
+        }
+
+    }
+
+    private fun switchMeals() {
+        binding.btnDishesThree.setOnClickListener {
+            isButtonClicked = !isButtonClicked
+            if (isButtonClicked) {
+                binding.btnDishesThree.setBackgroundResource(R.color.custom_yellow)
+                binding.btnDishesFour.setBackgroundResource(R.color.white)
+                isButtonClickedTwo = false
+                sharedViewModel.setButtonClicked(true)
+                sharedViewModel.setButtonClickedTwo(false)
+            } else {
+                binding.btnDishesThree.setBackgroundResource(R.color.white)
+            }
+        }
+        binding.btnDishesFour.setOnClickListener {
+            isButtonClickedTwo = true
+            isButtonClicked = false
+            binding.btnDishesThree.setBackgroundResource(R.color.white)
+            binding.btnDishesFour.setBackgroundResource(R.color.custom_yellow)
+            sharedViewModel.setButtonClicked(false)
+            sharedViewModel.setButtonClickedTwo(true)
+        }
+    }
+
     private fun setNameUser() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val myRef = uid?.let {
+            FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users").child(it)
+        }
         myRef?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-               // val user = dataSnapshot.getValue(User::class.java)
-                //val name = user?.firstName
-                //val address = user?.address
-//                binding.txtGreeting.text = "Привет, " + name + "!"
-//                binding.txAddress.text = address
+                val user = dataSnapshot.getValue(User::class.java)
+                val name = user?.firstName
+                val address = user?.address
+                binding.txtGreeting.text = "Привет, " + name + "!"
+                binding.txAddress.text = address.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -89,7 +165,7 @@ class HomeFragment : Fragment() {
 
     private fun updateDateBtOrders() {
         binding.dateButton.setOnClickListener {
-            if (!isButtonClicked) {
+            if (isButtonClicked) {
                 startIndex = 0
                 endIndex = 3
                 updateAdapterData()
@@ -100,7 +176,7 @@ class HomeFragment : Fragment() {
             }
         }
         binding.dateButtonNext.setOnClickListener {
-            if (!isButtonClicked) {
+            if (isButtonClicked) {
                 startIndex = 4
                 endIndex = 7
                 updateAdapterData()
@@ -111,7 +187,7 @@ class HomeFragment : Fragment() {
             }
         }
         binding.dateButtonNextNext.setOnClickListener {
-            if (!isButtonClicked) {
+            if (isButtonClicked) {
                 startIndex = 8
                 endIndex = 11
                 updateAdapterData()
@@ -126,7 +202,6 @@ class HomeFragment : Fragment() {
     private fun updateAdapterData() {
         val dateFromJson = DateFromJson()
         val mealItems = dateFromJson.loadMealItemsFromJson(requireContext())
-        Log.d("dateJsonHome", mealItems.toString())
         endIndex = minOf(endIndex, mealItems.size)
         val sublist = mealItems.subList(startIndex, endIndex)
         homeAdapter.submitMealItems(sublist)
