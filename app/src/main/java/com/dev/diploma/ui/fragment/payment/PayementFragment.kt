@@ -3,6 +3,7 @@ package com.dev.diploma.ui.fragment.payment
 import com.dev.diploma.ui.activity.TimeIntervalDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,19 +51,13 @@ class PaymentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btPlaceOrder.setOnClickListener {
-            placeOrder()
-        }
         setButton()
-        binding.btPlaceOrder.setOnClickListener {
-            val navController = findNavController()
-            navController.popBackStack(R.id.paymentFragment, false)
-            navController.navigate(R.id.ordersFragment)
-        }
         setNameAndMail()
         binding.txSnap.setOnClickListener {
             openDatePicker()
         }
+        setAddress()
+        switchDate()
         binding.tvTimePicker.setOnClickListener {
             val timeIntervalDialog = TimeIntervalDialog(requireContext())
             timeIntervalDialog.setOnIntervalSelectedListener { startTime, endTime ->
@@ -71,10 +66,13 @@ class PaymentFragment : Fragment() {
             }
             timeIntervalDialog.show()
         }
-
-
-        setAddress()
-        switchDate()
+        binding.btPlaceOrder.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            val navController = findNavController()
+            navController.popBackStack(R.id.paymentFragment, false)
+            navController.navigate(R.id.ordersFragment)
+            placeOrder()
+        }
     }
 
     private fun switchDate() {
@@ -225,11 +223,7 @@ class PaymentFragment : Fragment() {
             updates["time_product"] = data
             userReference.updateChildren(updates)
                 .addOnSuccessListener {
-                    Toast.makeText(
-                        requireContext(),
-                        "Time product data added successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Log.d("Success", "Данные добавлены")
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(

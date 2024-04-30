@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentUserInfoDialogBinding
-import com.dev.diploma.domain.model.User
 import com.dev.diploma.domain.model.UserInfoAuth
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -19,8 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class UserInfoDialogFragment : Fragment() {
-    private var _binding: FragmentUserInfoDialogBinding? = null
-    private lateinit var aut: FirebaseAuth
+    private lateinit var binding: FragmentUserInfoDialogBinding
+    private var aut: FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var databaseReference: DatabaseReference
     private var user = FirebaseAuth.getInstance().currentUser
     private var uid = user?.uid
@@ -29,19 +28,12 @@ class UserInfoDialogFragment : Fragment() {
             .getReference("users_num_auth").child(it)
     }
 
-    private val binding
-        get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUserInfoDialogBinding.inflate(inflater, container, false)
+        binding = FragmentUserInfoDialogBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -68,14 +60,14 @@ class UserInfoDialogFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(), "Повторите попытку позже", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         })
     }
 
     private fun changeInfoUser() {
-        aut = FirebaseAuth.getInstance()
         val uid = aut.currentUser?.uid
         databaseReference =
             FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -88,7 +80,6 @@ class UserInfoDialogFragment : Fragment() {
             val payment = binding.edPayment.text.toString()
             val cvv = binding.edPaymentCvv.text.toString()
             val term = binding.edPaymentTerm.text.toString()
-
             val updates = mutableMapOf<String, Any>()
 
             if (firstName.isNotEmpty()) {
@@ -146,11 +137,5 @@ class UserInfoDialogFragment : Fragment() {
                 }
             }
         }
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

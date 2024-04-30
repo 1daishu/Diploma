@@ -49,13 +49,13 @@ class CurrentProductsFragment : Fragment() {
         extracted()
         prepareRecyclerView()
         productWithdrawal()
-        binding.btNewOrder.setOnClickListener {
-            val navController = findNavController()
-            navController.popBackStack(R.id.ordersFragment, false)
-            navController.navigate(R.id.homeFragment)
-        }
         setChangeMeals()
         getProductFirebase()
+
+        binding.btNewOrder.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.homeFragment)
+        }
     }
 
     private fun getProductFirebase() {
@@ -158,19 +158,20 @@ class CurrentProductsFragment : Fragment() {
                         _binding!!.cvNotHaveOrderMessage.visibility = View.VISIBLE
                         _binding!!.imgNewOrder.visibility = View.VISIBLE
                         _binding!!.cvMealsOrder.visibility = View.GONE
-                        _binding!!.btNewOrder.visibility = View.GONE
+                        _binding!!.btNewOrder.visibility = View.VISIBLE
                     } else {
-                        val filteredList = productList.filterIndexed { index, _ ->
-                            index in startIndex until endIndex
-                        }
                         _binding!!.cvYourChanceOrder.visibility = View.VISIBLE
                         _binding!!.constraintCurrent.visibility = View.VISIBLE
                         _binding!!.btCancelOrders.visibility = View.VISIBLE
                         _binding!!.cvNotHaveOrderMessage.visibility = View.GONE
                         _binding!!.imgNewOrder.visibility = View.GONE
                         _binding!!.cvMealsOrder.visibility = View.VISIBLE
+                        _binding!!.btNewOrder.visibility = View.GONE
                         currentProductAdapter.submitList(productList)
-                        _binding!!.btNewOrder.visibility = View.INVISIBLE
+
+                        val filteredList = productList.filterIndexed { index, _ ->
+                            index in startIndex until endIndex
+                        }
                         currentProductAdapter.submitList(filteredList)
                     }
                 }
