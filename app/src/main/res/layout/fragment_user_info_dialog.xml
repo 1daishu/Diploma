@@ -70,6 +70,7 @@
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="1.0"
@@ -78,6 +79,7 @@
 
     <EditText
         android:id="@+id/ed_last_name"
+
         android:layout_width="@dimen/_120sdp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_5sdp"
@@ -86,6 +88,7 @@
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="1.0"
@@ -95,13 +98,14 @@
     <EditText
         android:id="@+id/ed_address"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="44dp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Адрес доставки"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
@@ -111,7 +115,7 @@
     <EditText
         android:id="@+id/ed_payment"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Номер карты"
@@ -126,15 +130,15 @@
 
     <EditText
         android:id="@+id/ed_payment_cvv"
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="cvv"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
-        android:textSize="@dimen/_10sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.994"
@@ -142,16 +146,17 @@
         app:layout_constraintTop_toBottomOf="@id/ed_payment" />
 
     <EditText
+
         android:id="@+id/ed_payment_term"
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Срок действия"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
-        android:textSize="@dimen/_10sdp"
+        android:textSize="@dimen/_11sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
@@ -161,13 +166,14 @@
     <TextView
         android:id="@+id/ed_number_phone"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="56dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_45sdp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Номер телефона"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
@@ -177,13 +183,14 @@
     <EditText
         android:id="@+id/ed_mail"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Почта"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
+        android:textSize="@dimen/_16sdp"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.0"
@@ -192,13 +199,14 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="188dp"
         android:text="Сохранить"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

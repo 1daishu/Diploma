@@ -51,11 +51,12 @@ class CurrentProductsFragment : Fragment() {
         productWithdrawal()
         setChangeMeals()
         getProductFirebase()
-
-        binding.btNewOrder.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.homeFragment)
-        }
+        binding.btNewOrder.postDelayed({
+            binding.btNewOrder.setOnClickListener {
+                val navController = findNavController()
+                navController.navigate(R.id.homeFragment)
+            }
+        }, 2000)
     }
 
     private fun getProductFirebase() {

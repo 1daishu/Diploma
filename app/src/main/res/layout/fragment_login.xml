@@ -9,22 +9,23 @@
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="@dimen/_200sdp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="16dp"
-        android:autofillHints=""
+        android:background="@null"
         android:focusable="false"
         android:fontFamily="@font/involve_medium"
         android:hint="@string/enter_number"
         android:inputType="phone"
         android:maxLength="12"
-        android:textSize="@dimen/_14sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textSize="@dimen/_18sdp"
         app:layout_constraintBottom_toTopOf="@+id/txt_code_verify"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.949" />
 
     <TextView
         android:id="@+id/txt_fast"
@@ -60,7 +61,7 @@
         android:id="@+id/txt_code_verify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="116dp"
         android:clickable="true"
         android:fontFamily="@font/involve_medium"
         android:text="@string/send_the_code"
@@ -68,10 +69,8 @@
         android:textSize="@dimen/_20sdp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+ />
 
     <TextView
         android:id="@+id/checkCode"

@@ -67,10 +67,9 @@ class PaymentFragment : Fragment() {
             timeIntervalDialog.show()
         }
         binding.btPlaceOrder.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
             val navController = findNavController()
             navController.popBackStack(R.id.paymentFragment, false)
-            navController.navigate(R.id.ordersFragment)
+            navController.navigate(R.id.homeFragment)
             placeOrder()
         }
     }
