@@ -97,7 +97,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/involve_bold"
-                    android:text="Твое меню на месяц:"
+                    android:text="Твое меню :"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18ssp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -152,9 +152,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dateButton"
                     tools:layout_editor_absoluteX="27dp"
-                    tools:layout_editor_absoluteY="120dp">
+                    tools:layout_editor_absoluteY="120dp" />
 
-                </androidx.recyclerview.widget.RecyclerView>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_delete_order"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="ОТМЕНИТЬ"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_order" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

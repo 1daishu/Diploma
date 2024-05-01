@@ -1,6 +1,5 @@
 package com.dev.diploma.ui.fragment.payment
 
-import com.dev.diploma.ui.activity.TimeIntervalDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +36,9 @@ class PaymentFragment : Fragment() {
     private var isPaymentOnlineCardViewClicked = false
     private var isPaymentOfflineNal = false
     private var isPaymentOfflineCardViewClicked = false
+    private var isTime = false
+    private var isTimeTwo = false
+    private var isTimeThree = false
 
     private val binding
         get() = _binding!!
@@ -58,20 +60,75 @@ class PaymentFragment : Fragment() {
         }
         setAddress()
         switchDate()
-        binding.tvTimePicker.setOnClickListener {
-            val timeIntervalDialog = TimeIntervalDialog(requireContext())
-            timeIntervalDialog.setOnIntervalSelectedListener { startTime, endTime ->
-                val selectedInterval = "Выбранный интервал: $startTime - $endTime"
-                binding.tvTimePicker.text = selectedInterval
-            }
-            timeIntervalDialog.show()
-        }
+        changeDataTime()
+
         binding.btPlaceOrder.setOnClickListener {
-            val navController = findNavController()
-            navController.popBackStack(R.id.paymentFragment, false)
-            navController.navigate(R.id.homeFragment)
-            placeOrder()
+            val isDateSelected = binding.txSnap.text.toString() != "Выберите дату"
+            val isOrderReady =
+                (isTime || isTimeThree || isTimeTwo) && (isPaymentOfflineCardViewClicked || isPaymentOfflineNal || isPaymentOnlineCardViewClicked)
+            if (isOrderReady || binding.edHome.text.isEmpty() ||
+                binding.edNumberEntrance.text.isEmpty() ||
+                binding.edNumberFlat.text.isEmpty() ||
+                !isDateSelected || binding.tvNameUser.text.isEmpty()
+                || binding.tvMailUser.text.isEmpty()
+            ) {
+                val navController = findNavController()
+                navController.popBackStack(R.id.paymentFragment, false)
+                navController.navigate(R.id.homeFragment)
+                placeOrder()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Выберите способ оплаты и дату",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
+    }
+
+
+    private fun changeDataTime() {
+        binding.btnDateOne.setOnClickListener {
+            isTime = !isTime
+            if (isTime) {
+                binding.btnDateOne.setBackgroundResource(R.color.custom_yellow)
+                binding.btnDateTwo.setBackgroundResource(R.color.white)
+                binding.btnDateThree.setBackgroundResource(R.color.white)
+                isTimeTwo = false
+                isTimeThree = false
+
+            } else {
+                binding.btnDateOne.setBackgroundResource(R.color.white)
+            }
+        }
+        binding.btnDateTwo.setOnClickListener {
+            isTimeTwo = !isTimeTwo
+            if (isTimeTwo) {
+                binding.btnDateTwo.setBackgroundResource(R.color.custom_yellow)
+                binding.btnDateOne.setBackgroundResource(R.color.white)
+                binding.btnDateThree.setBackgroundResource(R.color.white)
+                isTime = false
+                isTimeThree = false
+
+            } else {
+                binding.btnDateTwo.setBackgroundResource(R.color.white)
+            }
+        }
+
+        binding.btnDateThree.setOnClickListener {
+            isTimeThree = !isTimeThree
+            if (isTimeThree) {
+                binding.btnDateThree.setBackgroundResource(R.color.custom_yellow)
+                binding.btnDateTwo.setBackgroundResource(R.color.white)
+                binding.btnDateOne.setBackgroundResource(R.color.white)
+                isTime = false
+                isTimeTwo = false
+
+            } else {
+                binding.btnDateThree.setBackgroundResource(R.color.white)
+            }
+        }
+
     }
 
     private fun switchDate() {
@@ -145,19 +202,40 @@ class PaymentFragment : Fragment() {
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
+
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             { _, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
-                binding.txSnap.text =
-                    SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(selectedDate.time)
+
+                if (selectedDate.before(calendar) || isToday(selectedDate)) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Доставка на сегодня и на прошедшие дни не доступна",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    binding.txSnap.text =
+                        SimpleDateFormat(
+                            "dd.MM.yyyy",
+                            Locale.getDefault()
+                        ).format(selectedDate.time)
+                }
             },
             year,
             month,
             day
         )
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
         datePickerDialog.show()
+    }
+
+    private fun isToday(calendar: Calendar): Boolean {
+        val todayCalendar = Calendar.getInstance()
+        return calendar.get(Calendar.YEAR) == todayCalendar.get(Calendar.YEAR) &&
+                calendar.get(Calendar.MONTH) == todayCalendar.get(Calendar.MONTH) &&
+                calendar.get(Calendar.DAY_OF_MONTH) == todayCalendar.get(Calendar.DAY_OF_MONTH)
     }
 
     private fun setNameAndMail() {
@@ -179,7 +257,8 @@ class PaymentFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, "Ошибка,повторите попытку позже", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Ошибка,повторите попытку позже", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }
@@ -187,27 +266,27 @@ class PaymentFragment : Fragment() {
     private fun setButton() {
         if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
             addDataToDatabase("4 блюда ,1 неделя")
-            binding.tvPriceOrder.text = "5499₽"
+            binding.tvPriceOrder.text = "5499Р"
         }
         if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
             addDataToDatabase("4 блюда ,2 недели")
-            binding.tvPriceOrder.text = "9999₽"
+            binding.tvPriceOrder.text = "9999Р"
         }
         if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
             addDataToDatabase("4 блюда ,1 месяц")
-            binding.tvPriceOrder.text = "11999₽"
+            binding.tvPriceOrder.text = "11999Р"
         }
         if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
             addDataToDatabase("3 блюда ,1 неделя")
-            binding.tvPriceOrder.text = "3499₽"
+            binding.tvPriceOrder.text = "3499Р"
         }
         if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
             addDataToDatabase("3 блюда ,2 недели")
-            binding.tvPriceOrder.text = "7999₽"
+            binding.tvPriceOrder.text = "7999Р"
         }
         if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
             addDataToDatabase("3 блюда ,1 месяц")
-            binding.tvPriceOrder.text = "9999₽"
+            binding.tvPriceOrder.text = "9999Р"
         }
     }
 
@@ -250,7 +329,7 @@ class PaymentFragment : Fragment() {
                 .addOnSuccessListener {
                     Toast.makeText(
                         requireContext(),
-                        "Order placed successfully",
+                        "Доставка офомлена, посмотрите в ваших товарах",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -262,7 +341,8 @@ class PaymentFragment : Fragment() {
                     ).show()
                 }
         } ?: run {
-            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

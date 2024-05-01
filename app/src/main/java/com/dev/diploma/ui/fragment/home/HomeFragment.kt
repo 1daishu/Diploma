@@ -1,6 +1,7 @@
 package com.dev.diploma.ui.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,14 +64,51 @@ class HomeFragment : Fragment() {
         setNameUser()
         switchDate()
         binding.btnOrder.setOnClickListener {
-            if ((isButtonClicked || isButtonClickedTwo) && (isWeekButtonClicked || isMonthButtonClicked || isTwoWeekMonthButtonClicked)) {
-                findNavController().navigate(R.id.paymentFragment)
+            val isOrderReady =
+                (isButtonClicked || isButtonClickedTwo) && (isWeekButtonClicked || isMonthButtonClicked || isTwoWeekMonthButtonClicked)
+            if (isOrderReady) {
+                checkForExistingOrder()
             } else {
                 Toast.makeText(requireContext(), "Выберите интервал или время", Toast.LENGTH_SHORT)
                     .show()
             }
         }
     }
+
+    private fun checkForExistingOrder() {
+        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+        if (currentUserUid != null) {
+            val ordersRef =
+                FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("users")
+                    .child(currentUserUid)
+                    .child("products") // Узел с заказами пользователя
+            ordersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        Toast.makeText(
+                            requireContext(),
+                            "У вас уже есть активный заказ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        findNavController().navigate(R.id.paymentFragment)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ошибка при проверке заказа: ${error.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        } else {
+            Toast.makeText(requireContext(), "Пройдите регистрацию", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun switchDate() {
         binding.btOneWeek.setOnClickListener {
@@ -119,7 +157,6 @@ class HomeFragment : Fragment() {
                 binding.materialButton3.setBackgroundResource(R.color.white)
             }
         }
-
     }
 
     private fun switchMeals() {
@@ -224,13 +261,7 @@ class HomeFragment : Fragment() {
             adapter = homeAdapter
         }
         updateAdapterData()
-        orderProducts()
-    }
 
-    private fun orderProducts() {
-        binding.btnOrder.setOnClickListener {
-            findNavController().navigate(R.id.paymentFragment)
-        }
     }
 
     private fun observeButtonVisible() {

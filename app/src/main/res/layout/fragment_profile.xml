@@ -310,7 +310,7 @@
             android:layout_marginStart="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_18sdp"
             android:fontFamily="@font/involve_medium"
-            android:text="3 блюда, 1 месяц"
+            android:text=""
             android:textColor="@color/black" />
 
         <ImageView

@@ -7,31 +7,41 @@
     android:background="@color/white"
     tools:context=".ui.fragment.login.LoginFragment">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Введите номер"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
+
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="1dp"
         android:background="@null"
         android:focusable="false"
         android:fontFamily="@font/involve_medium"
         android:hint="@string/enter_number"
         android:inputType="phone"
-        android:maxLength="12"
         android:paddingStart="@dimen/_15sdp"
+        android:maxLength="12"
         android:textSize="@dimen/_18sdp"
         app:layout_constraintBottom_toTopOf="@+id/txt_code_verify"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txt_fast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:elevation="@dimen/_1sdp"
         android:fontFamily="@font/terminator_gen"
         android:gravity="center"
@@ -46,7 +56,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="56dp"
         android:elevation="@dimen/_1sdp"
         android:fontFamily="@font/terminator_gen"
         android:text="@string/name_app_2"
@@ -61,22 +71,21 @@
         android:id="@+id/txt_code_verify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
         android:clickable="true"
+        android:layout_marginTop="@dimen/_2sdp"
         android:fontFamily="@font/involve_medium"
         android:text="@string/send_the_code"
-        android:textColor="@color/custom_gray"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
- />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <TextView
         android:id="@+id/checkCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/involve_medium"
         android:text="@string/check_code"
         android:textSize="@dimen/_16ssp"
@@ -88,7 +97,7 @@
         android:id="@+id/pinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="272dp"
         android:clickable="true"
         android:itemBackground="@color/custom_gray_bt"
         android:visibility="visible"

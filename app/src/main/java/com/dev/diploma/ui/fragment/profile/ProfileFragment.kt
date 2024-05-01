@@ -44,6 +44,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userInfoDialogFragment = UserInfoDialogFragment()
         binding.btExitProfile.setOnClickListener {
+            findNavController().popBackStack(R.id.profileFragment, true)
+            findNavController().popBackStack(R.id.homeFragment, true)
             findNavController().navigate(R.id.loginFragment)
             sharedViewModel.navigateToHome()
         }

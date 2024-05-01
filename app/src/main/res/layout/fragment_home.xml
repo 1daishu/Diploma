@@ -85,7 +85,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:text="Москва " />
+                    android:fontFamily="@font/involve_medium"
+                    android:text="Москва "
+                    android:textColor="@color/black" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -97,7 +99,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginStart="@dimen/_17sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:src="@drawable/ic_mark" />
             </androidx.cardview.widget.CardView>

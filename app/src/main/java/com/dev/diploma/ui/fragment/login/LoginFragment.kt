@@ -97,8 +97,10 @@ class LoginFragment : Fragment() {
                         .addOnCompleteListener { userDataTask ->
                             if (userDataTask.isSuccessful) {
                                 onLoginSuccess()
-                                val navController = findNavController()
-                                navController.navigate(R.id.homeFragment)
+                                    val navController = findNavController()
+                                    navController.popBackStack(R.id.loginFragment, true)
+                                    navController.popBackStack(R.id.authFragment,true)
+                                    navController.navigate(R.id.homeFragment)
                                 viewModel.clearText()
                                 viewModel.clearTextPin()
                             } else {
@@ -157,7 +159,7 @@ class LoginFragment : Fragment() {
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
-            Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Неверный код", Toast.LENGTH_LONG).show()
         }
     }
 

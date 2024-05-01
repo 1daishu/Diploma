@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -51,12 +52,40 @@ class CurrentProductsFragment : Fragment() {
         productWithdrawal()
         setChangeMeals()
         getProductFirebase()
-        binding.btNewOrder.postDelayed({
-            binding.btNewOrder.setOnClickListener {
-                val navController = findNavController()
-                navController.navigate(R.id.homeFragment)
-            }
-        }, 2000)
+        binding.btNewOrder.setOnClickListener {
+            val navController = findNavController()
+            navController.popBackStack()
+            navController.navigate(R.id.homeFragment)
+        }
+        binding.btDeleteOrder.setOnClickListener {
+            deleteOrder()
+        }
+    }
+
+    private fun deleteOrder() {
+        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+        if (currentUserUid != null) {
+            val ordersRef =
+                FirebaseDatabase.getInstance("https://safeauthfirebase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("users")
+                    .child(currentUserUid)
+            ordersRef.child("products").removeValue()
+            ordersRef.child("time_product").removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ваш заказ отменен",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(
+                        requireContext(),
+                        "Ошибка при удалении данных из базы данных: ${exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
     }
 
     private fun getProductFirebase() {
@@ -72,6 +101,9 @@ class CurrentProductsFragment : Fragment() {
                 val user = dataSnapshot.getValue(User::class.java)
                 val countMeal = user?.time_product
                 if (countMeal?.contains("4 блюда") == true) {
+                    startIndex = 0
+                    endIndex = 4
+                    productWithdrawal()
                     binding.dateButton.setOnClickListener {
                         startIndex = 0
                         endIndex = 4
@@ -92,6 +124,9 @@ class CurrentProductsFragment : Fragment() {
                     }
                 }
                 if (countMeal?.contains("3 блюда") == true) {
+                    startIndex = 0
+                    endIndex = 3
+                    productWithdrawal()
                     binding.dateButton.setOnClickListener {
                         startIndex = 0
                         endIndex = 3

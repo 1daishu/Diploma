@@ -62,7 +62,7 @@
 
     <EditText
         android:id="@+id/ed_name"
-        android:layout_width="@dimen/_120sdp"
+        android:layout_width="0dp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bt_background_change_date_profile"
@@ -80,7 +80,7 @@
     <EditText
         android:id="@+id/ed_last_name"
 
-        android:layout_width="@dimen/_120sdp"
+        android:layout_width="0dp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/bt_background_change_date_profile"
@@ -99,7 +99,7 @@
         android:id="@+id/ed_address"
         android:layout_width="0dp"
         android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Адрес доставки"
         android:paddingStart="@dimen/_20sdp"
@@ -119,6 +119,8 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bt_background_change_date_profile"
         android:hint="Номер карты"
+        android:maxLength="16"
+        android:minLines="16"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_25sdp"
         android:paddingBottom="@dimen/_5sdp"
