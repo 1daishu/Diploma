@@ -81,13 +81,12 @@ class PaymentFragment : Fragment() {
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "Выберите способ оплаты и дату",
+                    "Заполните все данные",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
     }
-
 
     private fun changeDataTime() {
         binding.btnDateOne.setOnClickListener {

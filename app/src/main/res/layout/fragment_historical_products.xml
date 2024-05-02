@@ -30,7 +30,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_historical"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_180sdp"
+        android:layout_height="@dimen/_140sdp"
         android:translationZ="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_14sdp"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
@@ -47,12 +47,6 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_16ssp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:src="@drawable/ic_background_history" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +55,7 @@
             android:fontFamily="@font/involve_medium"
             android:text="3 блюда"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_18ssp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +65,16 @@
             android:fontFamily="@font/involve_medium"
             android:text="9900Р"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_18ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:src="@drawable/ic_line_history_orders">
+
+        </ImageView>
     </androidx.cardview.widget.CardView>
 
 

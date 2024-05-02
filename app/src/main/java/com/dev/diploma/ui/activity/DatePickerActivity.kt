@@ -14,7 +14,6 @@ class DatePickerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_picker)
-
         textView = findViewById(R.id.tx_snap)
         textView.setOnClickListener { showDatePickerDialog() }
     }
