@@ -65,13 +65,15 @@ class PaymentFragment : Fragment() {
         binding.btPlaceOrder.setOnClickListener {
             val isDateSelected = binding.txSnap.text.toString() != "Выберите дату"
             val isOrderReady =
-                (isTime || isTimeThree || isTimeTwo) && (isPaymentOfflineCardViewClicked || isPaymentOfflineNal || isPaymentOnlineCardViewClicked)
-            if (isOrderReady || binding.edHome.text.isEmpty() ||
-                binding.edNumberEntrance.text.isEmpty() ||
-                binding.edNumberFlat.text.isEmpty() ||
-                !isDateSelected || binding.tvNameUser.text.isEmpty()
-                || binding.tvMailUser.text.isEmpty()
-            ) {
+                (isTime || isTimeThree || isTimeTwo) &&
+                        (isPaymentOfflineCardViewClicked || isPaymentOfflineNal || isPaymentOnlineCardViewClicked)
+                        && (binding.tvMailUser.text.isNotBlank())
+                        && (binding.tvNameUser.text.isNotBlank())
+                        && (binding.edNumberFlat.text.isNotBlank())
+                        && (binding.edHome.text.isNotBlank())
+                        && (binding.edNumberEntrance.text.isNotBlank())
+                        && (isDateSelected)
+            if (isOrderReady) {
                 val navController = findNavController()
                 navController.popBackStack(R.id.paymentFragment, false)
                 navController.navigate(R.id.homeFragment)
