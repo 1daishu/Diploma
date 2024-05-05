@@ -73,9 +73,9 @@ class UserInfoDialogFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 s?.let {
-                    if (it.length == 2 && count == 1) { // Проверяем, что введено два символа и это был добавленный символ
+                    if (it.length == 2 && count == 1) {
                         binding.edPaymentTerm.setText("$s/")
-                        binding.edPaymentTerm.setSelection(binding.edPaymentTerm.text.length) // Устанавливаем курсор в конец текста
+                        binding.edPaymentTerm.setSelection(binding.edPaymentTerm.text.length)
                     }
                 }
             }
