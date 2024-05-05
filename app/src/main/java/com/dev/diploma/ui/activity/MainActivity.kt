@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.btm_nav)
         val navController = Navigation.findNavController(this, R.id.fragment_container_view)
         NavigationUI.setupWithNavController(bottomNavigation, navController)
-
     }
 
     fun showButtonLoginToHome() {

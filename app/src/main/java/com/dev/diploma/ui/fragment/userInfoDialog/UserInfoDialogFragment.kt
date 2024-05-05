@@ -1,6 +1,8 @@
 package com.dev.diploma.ui.fragment.userInfoDialog
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +47,41 @@ class UserInfoDialogFragment : Fragment() {
             findNavController().navigate(R.id.profileFragment)
         }
         setNumber()
+        binding.edPaymentCvv.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    val sb = StringBuilder(it)
+                    for (i in start until start + count) {
+                        sb.setCharAt(i, '*')
+                    }
+                    binding.edPaymentCvv.removeTextChangedListener(this)
+                    binding.edPaymentCvv.setText(sb)
+                    binding.edPaymentCvv.setSelection(start + count)
+                    binding.edPaymentCvv.addTextChangedListener(this)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.edPaymentTerm.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if (it.length == 2 && count == 1) { // Проверяем, что введено два символа и это был добавленный символ
+                        binding.edPaymentTerm.setText("$s/")
+                        binding.edPaymentTerm.setSelection(binding.edPaymentTerm.text.length) // Устанавливаем курсор в конец текста
+                    }
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 
     private fun setNumber() {

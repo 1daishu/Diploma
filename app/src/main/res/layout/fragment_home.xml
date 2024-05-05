@@ -86,7 +86,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:fontFamily="@font/involve_medium"
-                    android:text="Москва "
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <ImageView
@@ -423,7 +423,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:backgroundTint="@color/custom_gray_bt"
                         android:fontFamily="@font/involve_medium"
-                        android:text="Дата1"
+                        android:text=""
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_your_sample_menu_for_the_month" />
@@ -435,7 +435,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:backgroundTint="@color/custom_gray_bt"
                         android:fontFamily="@font/involve_medium"
-                        android:text="Дата2"
+                        android:text=""
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toStartOf="@+id/dateButtonNextNext"
                         app:layout_constraintStart_toEndOf="@+id/dateButton"
@@ -450,7 +450,7 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:backgroundTint="@color/custom_gray_bt"
                         android:fontFamily="@font/involve_medium"
-                        android:text="Дата"
+                        android:text=""
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

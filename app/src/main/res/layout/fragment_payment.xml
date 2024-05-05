@@ -69,16 +69,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_2sdp"
-                android:src="@drawable/ic_shape"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_shape" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:src="@drawable/ic_mark"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_mark" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -105,6 +105,10 @@
                 android:layout_marginBottom="16dp"
                 android:background="@null"
                 android:hint="Номер"
+                android:imeOptions="actionDone"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:textSize="@dimen/_10sdp"
                 android:translationZ="4dp" />
         </androidx.cardview.widget.CardView>
@@ -132,6 +136,10 @@
                 android:layout_marginBottom="16dp"
                 android:background="@null"
                 android:hint="Номер"
+                android:imeOptions="actionDone"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:textSize="@dimen/_10sdp"
                 android:translationZ="4dp" />
         </androidx.cardview.widget.CardView>
@@ -162,6 +170,10 @@
                 android:layout_marginBottom="16dp"
                 android:background="@null"
                 android:hint="Номер"
+                android:imeOptions="actionDone"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:textSize="@dimen/_10sdp"
                 android:translationZ="4dp" />
         </androidx.cardview.widget.CardView>
@@ -304,6 +316,16 @@
                 android:layout_marginTop="@dimen/_14sdp"
                 android:text=""
                 android:textSize="@dimen/_16sdp" />
+
+            <ImageView
+                android:id="@+id/img_go_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow_go_user_info" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -333,6 +355,16 @@
                 android:layout_marginTop="@dimen/_14sdp"
                 android:text=""
                 android:textSize="@dimen/_16sdp" />
+
+            <ImageView
+                android:id="@+id/img_go_user_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow_go_user_info" />
 
         </androidx.cardview.widget.CardView>
 

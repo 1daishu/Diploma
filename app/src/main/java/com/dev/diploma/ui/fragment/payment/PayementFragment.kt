@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -85,6 +86,12 @@ class PaymentFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+        binding.imgGoUserMail.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+        binding.imgGoUserName.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
         }
     }
 
@@ -266,27 +273,27 @@ class PaymentFragment : Fragment() {
 
     private fun setButton() {
         if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
-            addDataToDatabase("4 блюда ,1 неделя")
+            addDataToDatabase("4 блюда, 1 неделя")
             binding.tvPriceOrder.text = "5499Р"
         }
         if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
-            addDataToDatabase("4 блюда ,2 недели")
+            addDataToDatabase("4 блюда, 2 недели")
             binding.tvPriceOrder.text = "9999Р"
         }
         if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClickedTwo.value == true) {
-            addDataToDatabase("4 блюда ,1 месяц")
+            addDataToDatabase("4 блюда, 1 месяц")
             binding.tvPriceOrder.text = "11999Р"
         }
         if (sharedViewModel.isWeekButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
-            addDataToDatabase("3 блюда ,1 неделя")
+            addDataToDatabase("3 блюда, 1 неделя")
             binding.tvPriceOrder.text = "3499Р"
         }
         if (sharedViewModel.isTwoWeekMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
-            addDataToDatabase("3 блюда ,2 недели")
+            addDataToDatabase("3 блюда, 2 недели")
             binding.tvPriceOrder.text = "7999Р"
         }
         if (sharedViewModel.isMonthButtonClicked.value == true && sharedViewModel.isButtonClicked.value == true) {
-            addDataToDatabase("3 блюда ,1 месяц")
+            addDataToDatabase("3 блюда, 1 месяц")
             binding.tvPriceOrder.text = "9999Р"
         }
     }

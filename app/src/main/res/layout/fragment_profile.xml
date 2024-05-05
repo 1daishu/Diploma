@@ -82,7 +82,7 @@
             android:fontFamily="@font/involve_medium"
             android:text="Это ты?"
             android:textColor="@color/custom_gray"
-            android:textSize="@dimen/_8sdp" />
+            android:textSize="@dimen/_10sdp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/nameAndLastName"
@@ -90,8 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_42sdp"
             android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_12ssp"
             android:fontFamily="@font/involve_medium"
-            android:text="Заполните данные"
+            android:text=""
             android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton
@@ -255,6 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/involve_medium"
             android:text="@string/address_delivery"
             android:textColor="@color/custom_gray" />
@@ -299,6 +301,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/involve_medium"
             android:text="Твой выбор"
             android:textColor="@color/custom_gray" />
@@ -357,6 +360,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/involve_medium"
             android:text="Оплата"
             android:textColor="@color/custom_gray" />

@@ -40,8 +40,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:text="14 апр"
+            android:textColor="@color/custom_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:text="21 апр"
+            android:textColor="@color/custom_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:fontFamily="@font/involve_medium"
             android:text="Доставка завершена"
             android:textColor="@color/black"
@@ -50,8 +68,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:layout_marginEnd="@dimen/_60sdp"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:fontFamily="@font/involve_medium"
             android:text="3 блюда"
             android:textColor="@color/black"
@@ -60,8 +79,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_gravity="end|center"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
             android:fontFamily="@font/involve_medium"
             android:text="9900Р"
             android:textColor="@color/black"
@@ -70,11 +90,11 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/_30sdp"
-            android:src="@drawable/ic_line_history_orders">
-
-        </ImageView>
+            android:layout_gravity="top"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:src="@drawable/ic_line_history_orders" />
     </androidx.cardview.widget.CardView>
 
 
