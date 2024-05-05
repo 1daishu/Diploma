@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +16,6 @@ import com.dev.diploma.domain.model.Product
 import com.dev.diploma.domain.model.User
 import com.dev.diploma.ui.adapter.CurrentProductsAdapter
 import com.dev.diploma.ui.fragment.orders.OrdersViewModel
-import com.dev.diploma.ui.fragment.payment.PaymentViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

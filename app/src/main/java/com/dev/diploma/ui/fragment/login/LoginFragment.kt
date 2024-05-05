@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -14,7 +13,6 @@ import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentLoginBinding
 import com.dev.diploma.domain.model.UserInfoAuth
 import com.dev.diploma.ui.activity.SharedViewModel
-import com.dev.diploma.ui.fragment.home.HomeFragment
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential

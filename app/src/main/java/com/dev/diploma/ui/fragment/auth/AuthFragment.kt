@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev.diploma.R
 import com.dev.diploma.databinding.FragmentAuthBinding
-import com.google.firebase.auth.FirebaseAuth
 
 
 class AuthFragment : Fragment() {
